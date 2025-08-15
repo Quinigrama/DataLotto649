@@ -49,6 +49,7 @@ padding: 20px;
 background: white;
 border-radius: var(--border-radius);
 box-shadow: var(--shadow);
+position: relative; /* Para el selector de idioma */
 }
 
 .header h1{
@@ -64,6 +65,23 @@ gap: 10px;
 .header p{
 color: var(--gray);
 font-size: 1.1rem;
+}
+
+#langSelector {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    color: var(--dark); /* Asegura que el texto no sea blanco */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#langSelector:focus {
+    outline: 2px solid var(--primary);
 }
 
 .main-grid{
@@ -886,87 +904,92 @@ flex-shrink: 0;
 <body>
   <div class="container">
     <header class="header">
+      <select id="langSelector">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
       <h1>🎲 DataLotto49</h1>
-      <p>Generador Inteligente de Combinaciones Ganadoras</p>
+      <p data-translate-key="app_subtitle">Generador Inteligente de Combinaciones Ganadoras</p>
     </header>
 
     <div class="main-grid">
       <div class="game-section">
         <div class="selected-numbers">
-          <h3>🎯 Números Seleccionados</h3>
+          <h3 data-translate-key="selected_numbers_title">🎯 Números Seleccionados</h3>
           <div class="selected-display" id="selectedDisplay">
-            <div style="color:#666; font-style: italic;">Selecciona hasta 6 números</div>
+            <div style="color:#666; font-style: italic;" data-translate-key="select_up_to_6">Selecciona hasta 6 números</div>
           </div>
         </div>
 
         <div class="number-selection-section">
           <div class="number-selection-header">
-            <h3>Selección de números</h3>
+            <h3 data-translate-key="number_selection_title">Selección de números</h3>
             <div class="selection-mode-controls">
-              <button class="selection-mode-btn active" data-mode="cold" title="Marcar/Desmarcar números fríos">
+              <button class="selection-mode-btn active" data-mode="cold" title="Marcar/Desmarcar números fríos" data-translate-title-key="tooltip_cold">
                 <span class="icon">❄</span>
               </button>
-              <button class="selection-mode-btn" data-mode="hot" title="Marcar/Desmarcar números calientes">
+              <button class="selection-mode-btn" data-mode="hot" title="Marcar/Desmarcar números calientes" data-translate-title-key="tooltip_hot">
                 <span class="icon">🔥</span>
               </button>
-              <button class="selection-mode-btn" data-mode="excluded" title="Marcar/Desmarcar números excluidos">
+              <button class="selection-mode-btn" data-mode="excluded" title="Marcar/Desmarcar números excluidos" data-translate-title-key="tooltip_excluded">
                 <span class="icon">🚫</span>
               </button>
-              <button class="selection-mode-btn" id="randomBtn" title="Seleccionar 6 números al azar">
+              <button class="selection-mode-btn" id="randomBtn" title="Seleccionar 6 números al azar" data-translate-title-key="tooltip_random">
                 <span class="icon">🎲</span>
               </button>
-              <button class="selection-mode-btn" id="clearBtn" title="Limpiar todas las selecciones">
+              <button class="selection-mode-btn" id="clearBtn" title="Limpiar todas las selecciones" data-translate-title-key="tooltip_clear">
                 <span class="icon">🗑️</span>
               </button>
             </div>
           </div>
 
           <div class="numbers-grid" id="numbersGrid">
-            <!-- Matriz 10x5: Los números se generan dinámicamente -->
-          </div>
+            </div>
         </div>
 
         <div class="stats-section">
-          <h3>📊 Estadísticas en Tiempo Real</h3>
+          <h3 data-translate-key="stats_title">📊 Estadísticas en Tiempo Real</h3>
           <div class="stats-grid" id="statsGrid">
             <div class="stat-item">
-              <div class="stat-label">Suma Total</div>
+              <div class="stat-label" data-translate-key="stat_total_sum">Suma Total</div>
               <div class="stat-value" id="statSuma">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Par/Impar</div>
+              <div class="stat-label" data-translate-key="stat_even_odd">Par/Impar</div>
               <div class="stat-value" id="statParImpar">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Bajos/Altos</div>
+              <div class="stat-label" data-translate-key="stat_low_high">Bajos/Altos</div>
               <div class="stat-value" id="statBajosAltos">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Decenas</div>
+              <div class="stat-label" data-translate-key="stat_decades">Decenas</div>
               <div class="stat-value" id="statDecenas">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Agrup. Decenas</div>
+              <div class="stat-label" data-translate-key="stat_decade_groups">Agrup. Decenas</div>
               <div class="stat-value" id="statAgrupDecenas">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Consecutivos</div>
+              <div class="stat-label" data-translate-key="stat_consecutive">Consecutivos</div>
               <div class="stat-value" id="statConsecutivos">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Suma Dígitos</div>
+              <div class="stat-label" data-translate-key="stat_digit_sum">Suma Dígitos</div>
               <div class="stat-value" id="statSumaDigitos">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Números Primos</div>
+              <div class="stat-label" data-translate-key="stat_primes">Números Primos</div>
               <div class="stat-value" id="statPrimos">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Desviación</div>
+              <div class="stat-label" data-translate-key="stat_deviation">Desviación</div>
               <div class="stat-value" id="statDesviacion">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Patrones</div>
+              <div class="stat-label" data-translate-key="stat_patterns">Patrones</div>
               <div class="stat-value" id="statPatrones">-</div>
             </div>
           </div>
@@ -975,88 +998,88 @@ flex-shrink: 0;
 
       <div class="sidebar">
         <div class="panel">
-          <h3>♟ Estrategia de Juego</h3>
+          <h3 data-translate-key="strategy_title">♟ Estrategia de Juego</h3>
           <div class="strategy-buttons">
             <div class="strategy-btn active" data-strategy="simple">
               <div style="font-size: 1.5rem; margin-bottom: 5px;">🎯</div>
-              <div>Simple</div>
+              <div data-translate-key="strategy_simple">Simple</div>
             </div>
             <div class="strategy-btn" data-strategy="winning">
               <div style="font-size: 1.5rem; margin-bottom: 5px;">🏆</div>
-              <div>Estrategia Ganadora</div>
+              <div data-translate-key="strategy_winning">Estrategia Ganadora</div>
             </div>
             <div class="strategy-btn" data-strategy="multiple">
               <div style="font-size: 1.5rem; margin-bottom: 5px;">🎰</div>
-              <div>Múltiple</div>
+              <div data-translate-key="strategy_multiple">Múltiple</div>
             </div>
           </div>
 
           <div class="multiple-options" id="winningOptions" style="display: none;">
             <div class="input-row">
-              <label>Generar:</label>
+              <label data-translate-key="label_generate">Generar:</label>
               <input type="number" id="generateCount" value="100" min="10" max="1000">
-              <span>combinaciones</span>
+              <span data-translate-key="span_combinations">combinaciones</span>
             </div>
             <div class="input-row">
-              <label>Jugar:</label>
+              <label data-translate-key="label_play">Jugar:</label>
               <input type="number" id="playCount" value="10" min="1" max="100">
-              <span>mejores</span>
+              <span data-translate-key="span_best">mejores</span>
             </div>
           </div>
 
           <div class="multiple-numbers-options" id="multipleNumbersOptions" style="display: none;">
             <div class="numbers-select">
-              <label>¿Cuántos números quieres seleccionar?</label>
-              <div class="number-option active" data-numbers="7">7 números</div>
-              <div class="number-option" data-numbers="8">8 números</div>
-              <div class="number-option" data-numbers="9">9 números</div>
-              <div class="number-option" data-numbers="10">10 números</div>
-              <div class="number-option" data-numbers="11">11 números</div>
+              <label data-translate-key="label_how_many_numbers">¿Cuántos números quieres seleccionar?</label>
+              <div class="number-option active" data-numbers="7" data-translate-key="option_7_numbers">7 números</div>
+              <div class="number-option" data-numbers="8" data-translate-key="option_8_numbers">8 números</div>
+              <div class="number-option" data-numbers="9" data-translate-key="option_9_numbers">9 números</div>
+              <div class="number-option" data-numbers="10" data-translate-key="option_10_numbers">10 números</div>
+              <div class="number-option" data-numbers="11" data-translate-key="option_11_numbers">11 números</div>
             </div>
           </div>
 
-          <button class="generate-btn" id="generateBtn">🍀 Generar Combinación</button>
+          <button class="generate-btn" id="generateBtn"><span data-translate-key="btn_generate">🍀 Generar Combinación</span></button>
 
           <div class="ticket" id="ticket">
             <div class="ticket-header">
-              <h4>🎫 Tu Boleto Ganador</h4>
+              <h4 data-translate-key="ticket_title">🎫 Tu Boleto Ganador</h4>
               <p id="ticketDate"></p>
             </div>
             <div id="ticketCombinations"></div>
             <div class="ticket-actions">
-              <button class="ticket-btn save-btn" id="saveBtn">💾 Guardar Boleto</button>
-              <button class="ticket-btn share-btn" id="shareBtn">📤 Compartir</button>
+              <button class="ticket-btn save-btn" id="saveBtn"><span data-translate-key="btn_save">💾 Guardar Boleto</span></button>
+              <button class="ticket-btn share-btn" id="shareBtn"><span data-translate-key="btn_share">📤 Compartir</span></button>
             </div>
           </div>
         </div>
 
         <div class="panel">
-          <h3>⚙ Filtros Inteligentes</h3>
+          <h3 data-translate-key="filters_title">⚙ Filtros Inteligentes</h3>
           <div class="filters-panel">
             <div class="filter-group">
-              <div class="filter-title">🎯 Suma Total</div>
+              <div class="filter-title" data-translate-key="filter_total_sum">🎯 Suma Total</div>
               <div class="range-control">
-                <input type="number" id="sumMin" value="140" min="21" max="279">
-                <span>a</span>
-                <input type="number" id="sumMax" value="169" min="21" max="279">
+                <input type="number" id="sumMin" value="121" min="21" max="279">
+                <span data-translate-key="span_to">a</span>
+                <input type="number" id="sumMax" value="190" min="21" max="279">
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">⚖ Par/Impar</div>
+              <div class="filter-title" data-translate-key="filter_even_odd">⚖ Par/Impar</div>
               <div class="filter-options" id="parImparOptions">
                 <div class="filter-chip" data-value="6/0">6/0</div>
                 <div class="filter-chip" data-value="5/1">5/1</div>
                 <div class="filter-chip active" data-value="4/2">4/2</div>
                 <div class="filter-chip active" data-value="3/3">3/3</div>
-                <div class="filter-chip active" data-value="2/4">2/4</div>
+                <div class="filter-chip" data-value="2/4">2/4</div>
                 <div class="filter-chip" data-value="1/5">1/5</div>
                 <div class="filter-chip" data-value="0/6">0/6</div>
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">📊 Bajos/Altos(1-25/26-49)</div>
+              <div class="filter-title" data-translate-key="filter_low_high">📊 Bajos/Altos(1-25/26-49)</div>
               <div class="filter-options" id="bajosAltosOptions">
                 <div class="filter-chip" data-value="6/0">6/0</div>
                 <div class="filter-chip" data-value="5/1">5/1</div>
@@ -1069,7 +1092,7 @@ flex-shrink: 0;
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">🔢 Agrupación por Decenas</div>
+              <div class="filter-title" data-translate-key="filter_decade_groups">🔢 Agrupación por Decenas</div>
               <div class="filter-options" id="agrupDecenasOptions">
                 <div class="filter-chip active" data-value="6">6</div>
                 <div class="filter-chip active" data-value="5/1">5/1</div>
@@ -1085,24 +1108,24 @@ flex-shrink: 0;
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">🔗 Números Consecutivos</div>
+              <div class="filter-title" data-translate-key="filter_consecutive">🔗 Números Consecutivos</div>
               <div class="filter-options" id="consecutivosOptions">
-                <div class="filter-chip active" data-value="6">6</div>
-                <div class="filter-chip active" data-value="5/1">5/1</div>
-                <div class="filter-chip active" data-value="4/2">4/2</div>
-                <div class="filter-chip active" data-value="4/1/1">4/1/1</div>
-                <div class="filter-chip active" data-value="3/3">3/3</div>
-                <div class="filter-chip active" data-value="3/2/1">3/2/1</div>
-                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div>
-                <div class="filter-chip active" data-value="2/2/2">2/2/2</div>
-                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div>
+                <div class="filter-chip" data-value="6">6</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip" data-value="4/2">4/2</div>
+                <div class="filter-chip" data-value="4/1/1">4/1/1</div>
+                <div class="filter-chip" data-value="3/3">3/3</div>
+                <div class="filter-chip" data-value="3/2/1">3/2/1</div>
+                <div class="filter-chip" data-value="3/1/1/1">3/1/1/1</div>
+                <div class="filter-chip" data-value="2/2/2">2/2/2</div>
+                <div class="filter-chip" data-value="2/2/1/1">2/2/1/1</div>
                 <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div>
                 <div class="filter-chip active" data-value="1/1/1/1/1/1">1/1/1/1/1/1</div>
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">❌ Excluir Terminaciones</div>
+              <div class="filter-title" data-translate-key="filter_exclude_endings">❌ Excluir Terminaciones</div>
               <div class="filter-options" id="terminacionesExcluidasOptions">
                 <div class="filter-chip" data-value="0">*0</div>
                 <div class="filter-chip" data-value="1">*1</div>
@@ -1118,40 +1141,40 @@ flex-shrink: 0;
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">∑ Suma de Dígitos</div>
+              <div class="filter-title" data-translate-key="filter_digit_sum">∑ Suma de Dígitos</div>
               <div class="range-control">
                 <input type="number" id="sumaDigitosMin" value="28" min="21" max="63">
-                <span>a</span>
+                <span data-translate-key="span_to_2">a</span>
                 <input type="number" id="sumaDigitosMax" value="45" min="21" max="63">
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">🔢 Números Primos</div>
+              <div class="filter-title" data-translate-key="filter_primes">🔢 Números Primos</div>
               <div class="range-control">
-                <span>Entre</span>
-                <input type="number" id="primosMin" value="2" min="0" max="6">
-                <span>y</span>
+                <span data-translate-key="span_between">Entre</span>
+                <input type="number" id="primosMin" value="1" min="0" max="6">
+                <span data-translate-key="span_and">y</span>
                 <input type="number" id="primosMax" value="3" min="0" max="6">
-                <span>primos</span>
+                <span data-translate-key="span_primes">primos</span>
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">📊 Desviación Estándar</div>
+              <div class="filter-title" data-translate-key="filter_std_dev">📊 Desviación Estándar</div>
               <div class="range-control">
                 <input type="number" id="desviacionMin" value="12.0" min="1" max="24" step="0.1">
-                <span>a</span>
+                <span data-translate-key="span_to_3">a</span>
                 <input type="number" id="desviacionMax" value="18.0" min="1" max="24" step="0.1">
               </div>
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">🚫 Excluir Patrones</div>
+              <div class="filter-title" data-translate-key="filter_exclude_patterns">🚫 Excluir Patrones</div>
               <div class="filter-options" id="patronesOptions">
                 <div class="filter-chip" data-value="fibonacci">❌ Fibonacci</div>
-                <div class="filter-chip" data-value="paresConsecutivos">❌ Pares consecutivos</div>
-                <div class="filter-chip" data-value="multiplos">❌ Múltiplos</div>
+                <div class="filter-chip" data-value="paresConsecutivos" data-translate-key="pattern_consecutive_evens">❌ Pares consecutivos</div>
+                <div class="filter-chip" data-value="multiplos" data-translate-key="pattern_multiples">❌ Múltiplos</div>
               </div>
             </div>
           </div>
@@ -1159,44 +1182,332 @@ flex-shrink: 0;
       </div>
     </div>
 
-    <!-- Saved Tickets Section -->
     <div class="saved-tickets-section">
-      <h3>🗂 Boletos Guardados</h3>
+      <h3 data-translate-key="saved_tickets_title">🗂 Boletos Guardados</h3>
       <div class="saved-tickets" id="savedTickets">
-        <div style="color:#666; text-align: center; padding: 20px;">No tienes boletos guardados</div>
+        <div style="color:#666; text-align: center; padding: 20px;" data-translate-key="no_saved_tickets">No tienes boletos guardados</div>
       </div>
     </div>
 
-    <!-- Loading Modal -->
     <div class="loading" id="loadingModal">
       <div class="loading-content">
         <div class="loading-spinner"></div>
-        <h3 id="loadingText">Generando combinación...</h3>
-        <p>Intentos: <span id="loadingAttempts">0</span></p>
+        <h3 id="loadingText" data-translate-key="loading_generating">Generando combinación...</h3>
+        <p><span data-translate-key="loading_attempts">Intentos</span>: <span id="loadingAttempts">0</span></p>
       </div>
     </div>
 
-    <!-- Validation Modal -->
     <div class="modal" id="validationModal">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>🔍 Validar Boleto</h3>
-          <p>Introduce los 6 números ganadores separados por espacios, comas o puntos.</p>
+          <h3 data-translate-key="modal_validate_title">🔍 Validar Boleto</h3>
+          <p data-translate-key="modal_validate_instructions">Introduce los 6 números ganadores separados por espacios, comas o puntos.</p>
         </div>
         <input type="text" class="modal-input" id="winningNumbersInput" placeholder="7, 12. 23 31,42.49" maxlength="23">
         <div id="validationResults"></div>
         <div class="modal-actions">
-          <button class="modal-btn cancel" id="cancelValidationBtn">Cerrar</button>
-          <button class="modal-btn confirm" id="confirmValidationBtn">Validar</button>
+          <button class="modal-btn cancel" id="cancelValidationBtn" data-translate-key="btn_close">Cerrar</button>
+          <button class="modal-btn confirm" id="confirmValidationBtn" data-translate-key="btn_validate">Validar</button>
         </div>
       </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
   </div>
 
   <script>
+    // Objeto JSON para traducciones
+    const translations = {
+      es: {
+        app_subtitle: "Generador Inteligente de Combinaciones Ganadoras",
+        selected_numbers_title: "🎯 Números Seleccionados",
+        select_up_to_6: "Selecciona hasta 6 números",
+        number_selection_title: "Selección de números",
+        tooltip_cold: "Marcar/Desmarcar números fríos",
+        tooltip_hot: "Marcar/Desmarcar números calientes",
+        tooltip_excluded: "Marcar/Desmarcar números excluidos",
+        tooltip_random: "Seleccionar 6 números al azar",
+        tooltip_clear: "Limpiar todas las selecciones",
+        stats_title: "📊 Estadísticas en Tiempo Real",
+        stat_total_sum: "Suma Total",
+        stat_even_odd: "Par/Impar",
+        stat_low_high: "Bajos/Altos",
+        stat_decades: "Decenas",
+        stat_decade_groups: "Agrup. Decenas",
+        stat_consecutive: "Consecutivos",
+        stat_digit_sum: "Suma Dígitos",
+        stat_primes: "Números Primos",
+        stat_deviation: "Desviación",
+        stat_patterns: "Patrones",
+        strategy_title: "♟ Estrategia de Juego",
+        strategy_simple: "Simple",
+        strategy_winning: "Estrategia Ganadora",
+        strategy_multiple: "Múltiple",
+        label_generate: "Generar:",
+        span_combinations: "combinaciones",
+        label_play: "Jugar:",
+        span_best: "mejores",
+        label_how_many_numbers: "¿Cuántos números quieres seleccionar?",
+        option_7_numbers: "7 números",
+        option_8_numbers: "8 números",
+        option_9_numbers: "9 números",
+        option_10_numbers: "10 números",
+        option_11_numbers: "11 números",
+        btn_generate: "🍀 Generar Combinación",
+        ticket_title: "🎫 Tu Boleto Ganador",
+        btn_save: "💾 Guardar Boleto",
+        btn_share: "📤 Compartir",
+        filters_title: "⚙ Filtros Inteligentes",
+        filter_total_sum: "🎯 Suma Total",
+        span_to: "a",
+        filter_even_odd: "⚖ Par/Impar",
+        filter_low_high: "📊 Bajos/Altos(1-25/26-49)",
+        filter_decade_groups: "🔢 Agrupación por Decenas",
+        filter_consecutive: "🔗 Números Consecutivos",
+        filter_exclude_endings: "❌ Excluir Terminaciones",
+        filter_digit_sum: "∑ Suma de Dígitos",
+        span_to_2: "a",
+        filter_primes: "🔢 Números Primos",
+        span_between: "Entre",
+        span_and: "y",
+        span_primes: "primos",
+        filter_std_dev: "📊 Desviación Estándar",
+        span_to_3: "a",
+        filter_exclude_patterns: "🚫 Excluir Patrones",
+        pattern_consecutive_evens: "❌ Pares consecutivos",
+        pattern_multiples: "❌ Múltiplos",
+        saved_tickets_title: "🗂 Boletos Guardados",
+        no_saved_tickets: "No tienes boletos guardados",
+        loading_generating: "Generando combinación...",
+        loading_attempts: "Intentos",
+        modal_validate_title: "🔍 Validar Boleto",
+        modal_validate_instructions: "Introduce los 6 números ganadores separados por espacios, comas o puntos.",
+        btn_close: "Cerrar",
+        btn_validate: "Validar",
+        toast_combo_found: "🎉 ¡Combinación inteligente encontrada!",
+        toast_no_combo: "No se encontró combinación válida. Relaja los filtros.",
+        toast_generated_multiple: "¡Generadas {0} combinaciones! Mostrando las {1} mejores.",
+        toast_ticket_saved: "Boleto guardado correctamente",
+        toast_no_ticket_to_save: "No hay boleto para guardar",
+      },
+      en: {
+        app_subtitle: "Intelligent Winning Combination Generator",
+        selected_numbers_title: "🎯 Selected Numbers",
+        select_up_to_6: "Select up to 6 numbers",
+        number_selection_title: "Number Selection",
+        tooltip_cold: "Mark/Unmark cold numbers",
+        tooltip_hot: "Mark/Unmark hot numbers",
+        tooltip_excluded: "Mark/Unmark excluded numbers",
+        tooltip_random: "Select 6 random numbers",
+        tooltip_clear: "Clear all selections",
+        stats_title: "📊 Real-Time Statistics",
+        stat_total_sum: "Total Sum",
+        stat_even_odd: "Even/Odd",
+        stat_low_high: "Low/High",
+        stat_decades: "Decades",
+        stat_decade_groups: "Decade Groups",
+        stat_consecutive: "Consecutive",
+        stat_digit_sum: "Digit Sum",
+        stat_primes: "Prime Numbers",
+        stat_deviation: "Deviation",
+        stat_patterns: "Patterns",
+        strategy_title: "♟ Game Strategy",
+        strategy_simple: "Simple",
+        strategy_winning: "Winning Strategy",
+        strategy_multiple: "Multiple",
+        label_generate: "Generate:",
+        span_combinations: "combinations",
+        label_play: "Play:",
+        span_best: "best",
+        label_how_many_numbers: "How many numbers do you want to select?",
+        option_7_numbers: "7 numbers",
+        option_8_numbers: "8 numbers",
+        option_9_numbers: "9 numbers",
+        option_10_numbers: "10 numbers",
+        option_11_numbers: "11 numbers",
+        btn_generate: "🍀 Generate Combination",
+        ticket_title: "🎫 Your Winning Ticket",
+        btn_save: "💾 Save Ticket",
+        btn_share: "📤 Share",
+        filters_title: "⚙ Smart Filters",
+        filter_total_sum: "🎯 Total Sum",
+        span_to: "to",
+        filter_even_odd: "⚖ Even/Odd",
+        filter_low_high: "📊 Low/High (1-25/26-49)",
+        filter_decade_groups: "🔢 Decade Grouping",
+        filter_consecutive: "🔗 Consecutive Numbers",
+        filter_exclude_endings: "❌ Exclude Endings",
+        filter_digit_sum: "∑ Digit Sum",
+        span_to_2: "to",
+        filter_primes: "🔢 Prime Numbers",
+        span_between: "Between",
+        span_and: "and",
+        span_primes: "primes",
+        filter_std_dev: "📊 Standard Deviation",
+        span_to_3: "to",
+        filter_exclude_patterns: "🚫 Exclude Patterns",
+        pattern_consecutive_evens: "❌ Consecutive evens",
+        pattern_multiples: "❌ Multiples",
+        saved_tickets_title: "🗂 Saved Tickets",
+        no_saved_tickets: "You have no saved tickets",
+        loading_generating: "Generating combination...",
+        loading_attempts: "Attempts",
+        modal_validate_title: "🔍 Validate Ticket",
+        modal_validate_instructions: "Enter the 6 winning numbers separated by spaces, commas, or periods.",
+        btn_close: "Close",
+        btn_validate: "Validate",
+        toast_combo_found: "🎉 Smart combination found!",
+        toast_no_combo: "No valid combination found. Loosen the filters.",
+        toast_generated_multiple: "Generated {0} combinations! Showing the best {1}.",
+        toast_ticket_saved: "Ticket saved successfully",
+        toast_no_ticket_to_save: "No ticket to save",
+      },
+      fr: {
+        app_subtitle: "Générateur Intelligent de Combinaisons Gagnantes",
+        selected_numbers_title: "🎯 Numéros Sélectionnés",
+        select_up_to_6: "Sélectionnez jusqu'à 6 numéros",
+        number_selection_title: "Sélection de numéros",
+        tooltip_cold: "Marquer/Démarquer les numéros froids",
+        tooltip_hot: "Marquer/Démarquer les numéros chauds",
+        tooltip_excluded: "Marquer/Démarquer les numéros exclus",
+        tooltip_random: "Sélectionner 6 numéros au hasard",
+        tooltip_clear: "Effacer toutes les sélections",
+        stats_title: "📊 Statistiques en Temps Réel",
+        stat_total_sum: "Somme Totale",
+        stat_even_odd: "Pair/Impair",
+        stat_low_high: "Bas/Hauts",
+        stat_decades: "Dizaines",
+        stat_decade_groups: "Groupes de Dizaines",
+        stat_consecutive: "Consécutifs",
+        stat_digit_sum: "Somme des Chiffres",
+        stat_primes: "Nombres Premiers",
+        stat_deviation: "Écart-type",
+        stat_patterns: "Motifs",
+        strategy_title: "♟ Stratégie de Jeu",
+        strategy_simple: "Simple",
+        strategy_winning: "Stratégie Gagnante",
+        strategy_multiple: "Multiple",
+        label_generate: "Générer:",
+        span_combinations: "combinaisons",
+        label_play: "Jouer:",
+        span_best: "meilleures",
+        label_how_many_numbers: "Combien de numéros voulez-vous sélectionner ?",
+        option_7_numbers: "7 numéros",
+        option_8_numbers: "8 numéros",
+        option_9_numbers: "9 numéros",
+        option_10_numbers: "10 numéros",
+        option_11_numbers: "11 numéros",
+        btn_generate: "🍀 Générer Combinaison",
+        ticket_title: "🎫 Votre Billet Gagnant",
+        btn_save: "💾 Sauvegarder Billet",
+        btn_share: "📤 Partager",
+        filters_title: "⚙ Filtres Intelligents",
+        filter_total_sum: "🎯 Somme Totale",
+        span_to: "à",
+        filter_even_odd: "⚖ Pair/Impair",
+        filter_low_high: "📊 Bas/Hauts (1-25/26-49)",
+        filter_decade_groups: "🔢 Regroupement par Dizaines",
+        filter_consecutive: "🔗 Nombres Consécutifs",
+        filter_exclude_endings: "❌ Exclure Terminaisons",
+        filter_digit_sum: "∑ Somme des Chiffres",
+        span_to_2: "à",
+        filter_primes: "🔢 Nombres Premiers",
+        span_between: "Entre",
+        span_and: "et",
+        span_primes: "premiers",
+        filter_std_dev: "📊 Écart-type",
+        span_to_3: "à",
+        filter_exclude_patterns: "🚫 Exclure Motifs",
+        pattern_consecutive_evens: "❌ Pairs consécutifs",
+        pattern_multiples: "❌ Multiples",
+        saved_tickets_title: "🗂 Billets Sauvegardés",
+        no_saved_tickets: "Vous n'avez aucun billet sauvegardé",
+        loading_generating: "Génération de la combinaison...",
+        loading_attempts: "Tentatives",
+        modal_validate_title: "🔍 Valider le Billet",
+        modal_validate_instructions: "Saisissez les 6 numéros gagnants séparés par des espaces, des virgules ou des points.",
+        btn_close: "Fermer",
+        btn_validate: "Valider",
+        toast_combo_found: "🎉 Combinaison intelligente trouvée !",
+        toast_no_combo: "Aucune combinaison valide trouvée. Desserrez les filtres.",
+        toast_generated_multiple: "Généré {0} combinaisons ! Affichage des {1} meilleures.",
+        toast_ticket_saved: "Billet sauvegardé avec succès",
+        toast_no_ticket_to_save: "Aucun billet à sauvegarder",
+      },
+      de: {
+        app_subtitle: "Intelligenter Generator für Gewinnkombinationen",
+        selected_numbers_title: "🎯 Ausgewählte Nummern",
+        select_up_to_6: "Wählen Sie bis zu 6 Nummern",
+        number_selection_title: "Nummernauswahl",
+        tooltip_cold: "Kalte Nummern markieren/entfernen",
+        tooltip_hot: "Heiße Nummern markieren/entfernen",
+        tooltip_excluded: "Ausgeschlossene Nummern markieren/entfernen",
+        tooltip_random: "6 Zufallsnummern auswählen",
+        tooltip_clear: "Alle Auswahlen löschen",
+        stats_title: "📊 Echtzeit-Statistiken",
+        stat_total_sum: "Gesamtsumme",
+        stat_even_odd: "Gerade/Ungerade",
+        stat_low_high: "Niedrig/Hoch",
+        stat_decades: "Dekaden",
+        stat_decade_groups: "Dekadengruppen",
+        stat_consecutive: "Aufeinanderfolgend",
+        stat_digit_sum: "Ziffernsumme",
+        stat_primes: "Primzahlen",
+        stat_deviation: "Abweichung",
+        stat_patterns: "Muster",
+        strategy_title: "♟ Spielstrategie",
+        strategy_simple: "Einfach",
+        strategy_winning: "Gewinnstrategie",
+        strategy_multiple: "Mehrfach",
+        label_generate: "Erzeugen:",
+        span_combinations: "kombinationen",
+        label_play: "Spielen:",
+        span_best: "beste",
+        label_how_many_numbers: "Wie viele Nummern möchten Sie auswählen?",
+        option_7_numbers: "7 Nummern",
+        option_8_numbers: "8 Nummern",
+        option_9_numbers: "9 Nummern",
+        option_10_numbers: "10 Nummern",
+        option_11_numbers: "11 Nummern",
+        btn_generate: "🍀 Kombination erzeugen",
+        ticket_title: "🎫 Ihr Gewinnlos",
+        btn_save: "💾 Los speichern",
+        btn_share: "📤 Teilen",
+        filters_title: "⚙ Intelligente Filter",
+        filter_total_sum: "🎯 Gesamtsumme",
+        span_to: "bis",
+        filter_even_odd: "⚖ Gerade/Ungerade",
+        filter_low_high: "📊 Niedrig/Hoch (1-25/26-49)",
+        filter_decade_groups: "🔢 Dekadengruppierung",
+        filter_consecutive: "🔗 Aufeinanderfolgende Nummern",
+        filter_exclude_endings: "❌ Endungen ausschließen",
+        filter_digit_sum: "∑ Ziffernsumme",
+        span_to_2: "bis",
+        filter_primes: "🔢 Primzahlen",
+        span_between: "Zwischen",
+        span_and: "und",
+        span_primes: "primzahlen",
+        filter_std_dev: "📊 Standardabweichung",
+        span_to_3: "bis",
+        filter_exclude_patterns: "🚫 Muster ausschließen",
+        pattern_consecutive_evens: "❌ aufeinanderfolgende gerade",
+        pattern_multiples: "❌ Vielfache",
+        saved_tickets_title: "🗂 Gespeicherte Lose",
+        no_saved_tickets: "Sie haben keine gespeicherten Lose",
+        loading_generating: "Kombination wird erzeugt...",
+        loading_attempts: "Versuche",
+        modal_validate_title: "🔍 Los validieren",
+        modal_validate_instructions: "Geben Sie die 6 Gewinnzahlen getrennt durch Leerzeichen, Kommas oder Punkte ein.",
+        btn_close: "Schließen",
+        btn_validate: "Validieren",
+        toast_combo_found: "🎉 Intelligente Kombination gefunden!",
+        toast_no_combo: "Keine gültige Kombination gefunden. Lockern Sie die Filter.",
+        toast_generated_multiple: "{0} Kombinationen erzeugt! Die besten {1} werden angezeigt.",
+        toast_ticket_saved: "Ticket erfolgreich gespeichert",
+        toast_no_ticket_to_save: "Kein Ticket zum Speichern vorhanden",
+      }
+    };
+
     class DataLotto49Advanced {
       constructor() {
         // Estado del sistema
@@ -1215,16 +1526,16 @@ flex-shrink: 0;
         this.hotThreshold = 1.5;
         this.coldThreshold = 0.5;
 
-        // Filtros
+        // Filtros (con nuevos valores por defecto)
         this.filters = {
-          sum: { min: 140, max: 169 },
-          parImpar: ['4/2', '3/3', '2/4'],
+          sum: { min: 121, max: 190 },
+          parImpar: ['4/2', '3/3'],
           bajosAltos: ['4/2', '3/3', '2/4'],
           agrupDecenas: ['6', '5/1', '4/2', '4/1/1', '3/3', '3/2/1', '3/1/1/1', '2/2/2', '2/2/1/1', '2/1/1/1/1'],
-          consecutivos: ['6', '5/1', '4/2', '4/1/1', '3/3', '3/2/1', '3/1/1/1', '2/2/2', '2/2/1/1', '2/1/1/1/1', '1/1/1/1/1/1'],
+          consecutivos: ['2/1/1/1/1', '1/1/1/1/1/1'],
           terminaciones: [],
           sumaDigitos: { min: 28, max: 45 },
-          primos: { min: 2, max: 3 },
+          primos: { min: 1, max: 3 },
           desviacion: { min: 12.0, max: 18.0 },
           patrones: []
         };
@@ -1236,7 +1547,8 @@ flex-shrink: 0;
         this.createNumbersGrid();
         this.loadSavedTickets();
         this.bindEvents();
-        this.updateFilters();
+        this.updateFilters(); // Cargar filtros desde la UI al iniciar
+        this.setLanguage('es'); // Establecer idioma por defecto
       }
 
       // Crear matriz 10x5
@@ -1399,6 +1711,11 @@ flex-shrink: 0;
 
       // Vinculación de eventos
       bindEvents() {
+        // Selector de idioma
+        document.getElementById('langSelector').addEventListener('change', (e) => {
+            this.setLanguage(e.target.value);
+        });
+          
         // Modo de selección (SIN el botón de la mano)
         document.querySelectorAll('.selection-mode-btn').forEach(btn => {
           btn.addEventListener('click', (e) => {
@@ -1456,17 +1773,16 @@ flex-shrink: 0;
         rangeInputsConfig.forEach(config => {
             const minInput = document.getElementById(config.minId);
             const maxInput = document.getElementById(config.maxId);
+            // *** CAMBIO: Validar solo con 'change' (al perder el foco) ***
             const handler = () => {
                 this.validateMinMaxInputs(config.minId, config.maxId, config.absoluteMin, config.absoluteMax, config.prefix, config.isFloat);
                 this.updateFilters();
             };
             if(minInput) {
                 minInput.addEventListener('change', handler);
-                minInput.addEventListener('input', handler);
             }
             if(maxInput) {
                 maxInput.addEventListener('change', handler);
-                maxInput.addEventListener('input', handler);
             }
         });
 
@@ -1658,7 +1974,7 @@ flex-shrink: 0;
           this.showToast(`${prefix}: El máximo es ${absoluteMax}`, 'warning');
         }
         if (minValue > maxValue) {
-          minValue = maxValue;
+          // No intercambiar, solo advertir
           this.showToast(`${prefix}: El mínimo no puede ser mayor que el máximo`, 'warning');
         }
 
@@ -1668,9 +1984,9 @@ flex-shrink: 0;
 
       // Actualización de filtros
       updateFilters() {
-        this.filters.sum.min = parseInt(document.getElementById('sumMin').value) || 140;
-        this.filters.sum.max = parseInt(document.getElementById('sumMax').value) || 169;
-        this.filters.primos.min = parseInt(document.getElementById('primosMin').value) || 2;
+        this.filters.sum.min = parseInt(document.getElementById('sumMin').value) || 121;
+        this.filters.sum.max = parseInt(document.getElementById('sumMax').value) || 190;
+        this.filters.primos.min = parseInt(document.getElementById('primosMin').value) || 1;
         this.filters.primos.max = parseInt(document.getElementById('primosMax').value) || 3;
         this.filters.sumaDigitos.min = parseInt(document.getElementById('sumaDigitosMin').value) || 28;
         this.filters.sumaDigitos.max = parseInt(document.getElementById('sumaDigitosMax').value) || 45;
@@ -1679,7 +1995,7 @@ flex-shrink: 0;
 
         this.filters.agrupDecenas = Array.from(document.querySelectorAll('#agrupDecenasOptions .filter-chip.active')).map(chip => chip.dataset.value);
         this.filters.consecutivos = Array.from(document.querySelectorAll('#consecutivosOptions .filter-chip.active')).map(chip => chip.dataset.value);
-        this.filters.terminaciones = Array.from(document.querySelectorAll('#terminacionesExcluidasOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.terminaciones = Array.from(document.querySelectorAll('#terminacionesExcluidasOptions .filter-chip.active')).map(chip => parseInt(chip.dataset.value));
         this.filters.patrones = Array.from(document.querySelectorAll('#patronesOptions .filter-chip.active')).map(chip => chip.dataset.value);
         this.filters.parImpar = Array.from(document.querySelectorAll('#parImparOptions .filter-chip.active')).map(chip => chip.dataset.value);
         this.filters.bajosAltos = Array.from(document.querySelectorAll('#bajosAltosOptions .filter-chip.active')).map(chip => chip.dataset.value);
@@ -1689,9 +2005,10 @@ flex-shrink: 0;
       updateDisplay() {
         const selectedDisplay = document.getElementById('selectedDisplay');
         selectedDisplay.innerHTML = '';
+        const lang = document.getElementById('langSelector').value || 'es';
 
         if(this.selectedNumbers.length === 0) {
-          selectedDisplay.innerHTML = '<div style="color:#666; font-style: italic;">Selecciona hasta 6 números</div>';
+          selectedDisplay.innerHTML = `<div style="color:#666; font-style: italic;">${translations[lang].select_up_to_6}</div>`;
         } else {
           this.selectedNumbers.sort((a, b) => a - b).forEach(num => {
             const span = document.createElement('span');
@@ -1704,6 +2021,28 @@ flex-shrink: 0;
             selectedDisplay.appendChild(span);
           });
         }
+      }
+      
+      // Función para cambiar el idioma
+      setLanguage(lang) {
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-translate-key]');
+        elements.forEach(el => {
+            const key = el.dataset.translateKey;
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        
+        const titleElements = document.querySelectorAll('[data-translate-title-key]');
+        titleElements.forEach(el => {
+            const key = el.dataset.translateTitleKey;
+            if (translations[lang] && translations[lang][key]) {
+                el.title = translations[lang][key];
+            }
+        });
+        // Actualizar placeholder de selección de números
+        this.updateDisplay();
       }
 
       // Generación de combinación
@@ -1723,7 +2062,7 @@ flex-shrink: 0;
             await this.generateMultipleCombination();
           }
         } catch(error) {
-          this.showToast('Error generando combinación: ' + error.message, 'error');
+          this.showToast('Error generating combination: ' + error.message, 'error');
         } finally {
           this.isGenerating = false;
         }
@@ -1735,6 +2074,7 @@ flex-shrink: 0;
         const attemptsEl = document.getElementById('loadingAttempts');
         let attempts = 0;
         const maxAttempts = 50000;
+        const lang = document.getElementById('langSelector').value || 'es';
 
         attemptsEl.textContent = '0';
         loadingModal.style.display = 'flex';
@@ -1755,14 +2095,14 @@ flex-shrink: 0;
             this.updateDisplay();
             this.calculateStats();
             this.showTicket([combination]);
-            this.showToast('🎉 ¡Combinación inteligente encontrada!');
+            this.showToast(translations[lang].toast_combo_found, 'success');
             loadingModal.style.display = 'none';
             return;
           }
         }
 
         loadingModal.style.display = 'none';
-        this.showToast('No se encontró combinación válida. Relaja los filtros.', 'error');
+        this.showToast(translations[lang].toast_no_combo, 'error');
       }
 
       // Generación de combinación ganadora
@@ -1770,10 +2110,11 @@ flex-shrink: 0;
         const loadingModal = document.getElementById('loadingModal');
         const attemptsEl = document.getElementById('loadingAttempts');
         const loadingText = document.getElementById('loadingText');
+        const lang = document.getElementById('langSelector').value || 'es';
 
         loadingModal.style.display = 'flex';
         attemptsEl.textContent = '0';
-        loadingText.textContent = 'Generando combinaciones ganadoras...';
+        loadingText.innerHTML = translations[lang].loading_generating;
 
         const generateCount = parseInt(document.getElementById('generateCount').value) || 100;
         const playCount = parseInt(document.getElementById('playCount').value) || 10;
@@ -1786,7 +2127,6 @@ flex-shrink: 0;
           attemptsEl.textContent = attempts;
 
           if(attempts % 100 === 0) {
-            loadingText.textContent = `Encontradas ${validCombinations.length}/${generateCount} combinaciones...`;
             await this.delay(1);
           }
 
@@ -1802,7 +2142,7 @@ flex-shrink: 0;
 
         if(validCombinations.length === 0) {
           loadingModal.style.display = 'none';
-          this.showToast('No se generaron combinaciones válidas. Relaja los filtros.', 'error');
+          this.showToast(translations[lang].toast_no_combo, 'error');
           return;
         }
 
@@ -1816,7 +2156,10 @@ flex-shrink: 0;
         }
 
         this.showTicket(bestCombinations);
-        this.showToast(`🎉 ¡Generadas ${validCombinations.length} combinaciones! Mostrando las ${playCount} mejores.`);
+        const toastMsg = translations[lang].toast_generated_multiple
+                            .replace('{0}', validCombinations.length)
+                            .replace('{1}', playCount);
+        this.showToast(toastMsg, 'success');
         loadingModal.style.display = 'none';
       }
 
@@ -1825,10 +2168,11 @@ flex-shrink: 0;
         const loadingModal = document.getElementById('loadingModal');
         const attemptsEl = document.getElementById('loadingAttempts');
         const loadingText = document.getElementById('loadingText');
+        const lang = document.getElementById('langSelector').value || 'es';
 
         attemptsEl.textContent = '0';
         loadingModal.style.display = 'flex';
-        loadingText.textContent = 'Generando combinación múltiple...';
+        loadingText.innerHTML = translations[lang].loading_generating;
 
         const numNumbers = parseInt(document.querySelector('.number-option.active')?.dataset.numbers || 7);
         const maxAttempts = 50000;
@@ -1848,15 +2192,11 @@ flex-shrink: 0;
         const requiredPercentage = getRequiredPercentage(numNumbers);
         let bestCandidate = null;
 
-        loadingText.textContent = `Buscando ${numNumbers} números (mínimo ${requiredPercentage}% válidas)...`;
-
         while(attempts < maxAttempts) {
           attempts++;
           attemptsEl.textContent = attempts;
 
           if(attempts % 100 === 0) {
-            const bestPercent = bestCandidate ? bestCandidate.percentage.toFixed(1) : '0';
-            loadingText.textContent = `Intento ${attempts} - Mejor: ${bestPercent}% (necesita ${requiredPercentage}%)`;
             await this.delay(1);
           }
 
@@ -1878,7 +2218,7 @@ flex-shrink: 0;
             this.calculateStats();
 
             this.showTicketMultiple(nNumbers, validCombinations, allCombinations.length);
-            this.showToast(`🎉 ¡Combinación múltiple de ${numNumbers} números encontrada! (${validCombinations}/${allCombinations.length} válidas - ${validPercentage.toFixed(1)}%)`);
+            this.showToast(`🎉 Multiple combination of ${numNumbers} numbers found! (${validCombinations}/${allCombinations.length} valid - ${validPercentage.toFixed(1)}%)`, 'success');
             loadingModal.style.display = 'none';
             return;
           }
@@ -1900,13 +2240,13 @@ flex-shrink: 0;
           this.calculateStats();
 
           this.showTicketMultiple(bestCandidate.numbers, bestCandidate.validCombinations, bestCandidate.totalCombinations);
-          this.showToast(`⚡ Mejor combinación de ${numNumbers} números encontrada (${bestCandidate.validCombinations}/${bestCandidate.totalCombinations} válidas - ${bestCandidate.percentage.toFixed(1)}%)`);
+          this.showToast(`⚡ Best combination of ${numNumbers} numbers found (${bestCandidate.validCombinations}/${bestCandidate.totalCombinations} valid - ${bestCandidate.percentage.toFixed(1)}%)`, 'success');
           loadingModal.style.display = 'none';
           return;
         }
 
         loadingModal.style.display = 'none';
-        this.showToast(`No se encontró combinación múltiple de ${numNumbers} números válida. Mejor intento: ${bestCandidate ? bestCandidate.percentage.toFixed(1) : 0}%. Intenta relajar los filtros.`, 'error');
+        this.showToast(`No valid multiple combination of ${numNumbers} numbers found. Best try: ${bestCandidate ? bestCandidate.percentage.toFixed(1) : 0}%. Try loosening the filters.`, 'error');
       }
 
       // Crear combinación inteligente (LÓGICA ORIGINAL CORREGIDA)
@@ -2108,7 +2448,7 @@ flex-shrink: 0;
         if (new Set(combination).size !== 6) return false;
         if (combination.some(n => this.excludedNumbers.has(n))) return false;
         if (this.filters.terminaciones.length > 0) {
-          if (combination.some(n => this.filters.terminaciones.includes(String(n % 10)))) {
+          if (combination.some(n => this.filters.terminaciones.includes(n % 10))) {
             return false;
           }
         }
@@ -2375,7 +2715,7 @@ flex-shrink: 0;
             <div>${numbers.join('-')}</div>
           </div>
           <div style="padding: 10px; background:#f9fafb; border-radius: 6px; font-size: 0.9rem;">
-            ${validCombinations}/${totalCombinations} combinaciones válidas (${((validCombinations/totalCombinations)*100).toFixed(1)}%)
+            ${validCombinations}/${totalCombinations} valid combinations (${((validCombinations/totalCombinations)*100).toFixed(1)}%)
           </div>
         `;
 
@@ -2394,8 +2734,9 @@ flex-shrink: 0;
       // Guardar boleto
       saveTicket() {
         if(!this.currentTicket) {
-          this.showToast('No hay boleto para guardar', 'error');
-          return;
+            const lang = document.getElementById('langSelector').value || 'es';
+            this.showToast(translations[lang].toast_no_ticket_to_save, 'error');
+            return;
         }
 
         // Límite de 10 boletos
@@ -2405,7 +2746,8 @@ flex-shrink: 0;
         this.savedTickets.unshift(this.currentTicket);
         this.saveToStorage();
         this.updateSavedTickets();
-        this.showToast('Boleto guardado correctamente');
+        const lang = document.getElementById('langSelector').value || 'es';
+        this.showToast(translations[lang].toast_ticket_saved, 'success');
         document.getElementById('saveBtn').disabled = true;
       }
 
@@ -2435,8 +2777,10 @@ ${this.currentTicket.combinations.map((combo, index) => `${index + 1}. ${combo.j
       // Actualizar boletos guardados
       updateSavedTickets() {
         const container = document.getElementById('savedTickets');
+        const lang = document.getElementById('langSelector').value || 'es';
+        
         if(this.savedTickets.length === 0) {
-          container.innerHTML = '<div style="color:#666; text-align: center; padding: 20px;">No tienes boletos guardados</div>';
+          container.innerHTML = `<div style="color:#666; text-align: center; padding: 20px;">${translations[lang].no_saved_tickets}</div>`;
           return;
         }
 
