@@ -1,260 +1,292 @@
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>🎲 DataLotto49</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎲 DataLotto49</title>
 <style>
 :root{
---primary:#6366f1; 
---primary-dark:#4f46e5; 
---secondary:#8b5cf6; 
+--primary:#6366f1;
+--primary-dark:#4f46e5;
+--secondary:#8b5cf6;
 --success:#10b981;
---danger:#ef4444; 
---warning:#f59e0b; 
+--danger:#ef4444;
+--danger-light:#fca5a5;
+--warning:#f59e0b;
 --info:#06b6d4;
 --dark:#1f2937;
---light:#f9fafb; 
---gray:#6b7280; 
---border-radius: 12px; 
---shadow: 0 4px 6px-1px rgba(0, 0, 0, 0.1), 0 2px 4px-1px rgba(0, 0, 0, 0.06); 
---shadow-lg: 0 10px 15px-3px rgba(0, 0, 0, 0.1), 0 4px 6px-2px rgba(0, 0, 0, 0.05); 
+--light:#f9fafb;
+--gray:#6b7280;
+--border-radius: 12px;
+--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-} 
+}
 
 *{
-margin: 0; 
-padding: 0; 
+margin: 0;
+padding: 0;
 box-sizing: border-box;
-} 
+}
 
 body{
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-background: linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%); 
-min-height: 100vh; 
-padding: 20px; 
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);
+min-height: 100vh;
+padding: 20px;
 color: var(--dark);
-} 
+}
 
 .container{
-max-width: 1400px; 
+max-width: 1400px;
 margin: 0 auto;
-} 
+}
 
 .header{
-text-align: center; 
-margin-bottom: 30px; 
-padding: 20px; 
-background: white; 
-border-radius: var(--border-radius); 
+text-align: center;
+margin-bottom: 30px;
+padding: 20px;
+background: white;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .header h1{
-color: var(--primary); 
+color: var(--primary);
 font-size: 2.5rem;
-margin-bottom: 10px; 
-display: flex; 
-align-items: center; 
-justify-content: center; 
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
 gap: 10px;
-} 
+}
 
 .header p{
-color: var(--gray); 
+color: var(--gray);
 font-size: 1.1rem;
-} 
+}
 
 .main-grid{
-display: grid; 
-grid-template-columns: 2fr 1fr; 
-gap: 20px; 
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 20px;
 margin-bottom: 20px;
-} 
+}
 
-@media(max-width: 992px){ 
+@media(max-width: 992px){
 .main-grid{
-grid-template-columns: 1fr; 
-} 
-} 
+grid-template-columns: 1fr;
+}
+}
 
 .game-section{
-display: flex; 
+display: flex;
 flex-direction: column;
 gap: 20px;
-} 
+}
 
 .selected-numbers{
-background: white; 
-padding: 20px; 
-border-radius: var(--border-radius); 
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .selected-numbers h3{
-color: var(--primary); 
-margin-bottom: 15px; 
-display: flex; 
-align-items: center; 
+color: var(--primary);
+margin-bottom: 15px;
+display: flex;
+align-items: center;
 gap: 10px;
-} 
+}
 
 .selected-display{
-min-height: 60px; 
-border: 2px dashed #e5e7eb; 
-border-radius: 8px; 
-padding: 15px; 
-display: flex; 
+min-height: 60px;
+border: 2px dashed #e5e7eb;
+border-radius: 8px;
+padding: 15px;
+display: flex;
 flex-wrap: wrap;
-gap: 10px; 
-align-items: center; 
+gap: 10px;
+align-items: center;
 justify-content: center;
-} 
+}
 
 .number-selection-section{
-background: white; 
-padding: 20px; 
-border-radius: var(--border-radius); 
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .number-selection-header{
-display: flex; 
-justify-content: space-between; 
-align-items: center; 
+display: flex;
+justify-content: space-between;
+align-items: center;
 margin-bottom: 15px;
-} 
+}
 
 .number-selection-header h3{
 color: var(--primary);
-} 
+}
 
 .selection-mode-controls{
-display: flex; 
+display: flex;
 gap: 10px;
-} 
+}
 
 .selection-mode-btn{
-width: 40px; 
-height: 40px; 
-border: 2px solid #e5e7eb; 
-background: white; 
+width: 40px;
+height: 40px;
+border: 2px solid #e5e7eb;
+background: white;
 border-radius: 50%;
-display: flex; 
-align-items: center; 
-justify-content: center; 
-cursor: pointer; 
-transition: var(--transition);
-} 
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.4s ease, border-color 0.3s;
+}
 
 .selection-mode-btn:hover{
-border-color: var(--primary); 
+border-color: var(--primary);
 transform: translateY(-2px);
-} 
+}
 
 .selection-mode-btn.active{
-border-color: var(--primary); 
-background: var(--primary); 
+border-color: var(--primary);
+background: var(--primary);
 color: white;
-} 
+}
 
-.numbers-grid{
-display: grid; 
-grid-template-columns: repeat(7, 1fr); 
-gap: 10px;
-} 
+#randomBtn:hover {
+    transform: rotate(360deg);
+}
 
-@media(max-width: 768px){ 
+#clearBtn {
+    transition: all 0.3s ease;
+}
+
+#clearBtn:hover {
+    transform: scale(1.1);
+}
+
+#clearBtn.has-selections {
+    background: var(--danger-light);
+    border-color: var(--danger-light);
+    color: white;
+}
+
+/* Nueva matriz 10x5 */
 .numbers-grid{
-grid-template-columns: repeat(7, 1fr); 
-} 
-} 
+display: grid;
+grid-template-columns: repeat(10, 1fr);
+grid-template-rows: repeat(5, 1fr);
+gap: 8px;
+max-width: 500px;
+margin: 0 auto;
+}
+
+@media(max-width: 768px){
+.numbers-grid{
+grid-template-columns: repeat(10, 1fr);
+gap: 6px;
+}
+}
 
 .number-ball{
 width: 100%;
-aspect-ratio: 1; 
-background:#f3f4f6; 
+aspect-ratio: 1;
+background:#f3f4f6;
 border-radius: 50%;
-display: flex; 
-align-items: center; 
-justify-content: center; 
-font-weight: bold; 
-cursor: pointer; 
-transition: var(--transition); 
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+cursor: pointer;
+transition: var(--transition);
 border: 2px solid transparent;
-} 
+font-size: 0.9rem;
+}
 
 .number-ball:hover{
-transform: scale(1.1); 
+transform: scale(1.1);
 border-color: var(--primary);
-} 
+}
 
 .number-ball.selected{
-background: var(--primary); 
-color: white; 
+background: var(--primary);
+color: white;
 transform: scale(1.1);
-} 
+}
 
 .number-ball.cold{
-background:#3b82f6; 
+background:#3b82f6;
 color: white;
-} 
+}
 
 .number-ball.hot{
-background:#ef4444; 
+background:#ef4444;
 color: white;
-} 
+}
 
 .number-ball.excluded{
-background:#6b7280; 
+background:#6b7280;
 color: white;
 opacity: 0.7;
-} 
+}
+
+.number-ball.random-pick {
+    background: var(--warning);
+    color: white;
+    transform: scale(1.1);
+    border-color: var(--warning);
+}
 
 .stats-section{
-background: white; 
-padding: 20px; 
-border-radius: var(--border-radius); 
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .stats-section h3{
-color: var(--primary); 
-margin-bottom: 15px; 
-display: flex; 
-align-items: center; 
+color: var(--primary);
+margin-bottom: 15px;
+display: flex;
+align-items: center;
 gap: 10px;
-} 
+}
 
 .stats-grid{
-display: grid; 
-grid-template-columns: repeat(2, 1fr); 
+display: grid;
+grid-template-columns: repeat(2, 1fr);
 gap: 15px;
-} 
+}
 
-@media(max-width: 576px){ 
+@media(max-width: 576px){
 .stats-grid{
-grid-template-columns: 1fr; 
-} 
-} 
+grid-template-columns: 1fr;
+}
+}
 
 .stat-item{
-padding: 12px; 
-background:#f9fafb; 
-border-radius: 8px; 
+padding: 12px;
+background:#f9fafb;
+border-radius: 8px;
 border-left: 4px solid var(--primary);
-} 
+}
 
 .stat-label{
-font-size: 0.9rem; 
-color: var(--gray); 
+font-size: 0.9rem;
+color: var(--gray);
 margin-bottom: 5px;
-} 
+}
 
 .stat-value{
-font-weight: bold; 
+font-weight: bold;
 color: var(--dark);
-} 
+}
 
 .stat-value.valid{
 color: var(--success);
@@ -265,388 +297,414 @@ color: var(--danger);
 }
 
 .sidebar{
-display: flex; 
+display: flex;
 flex-direction: column;
 gap: 20px;
-} 
+}
 
 .panel{
-background: white; 
-padding: 20px; 
-border-radius: var(--border-radius); 
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .panel h3{
-color: var(--primary); 
-margin-bottom: 20px; 
-display: flex; 
-align-items: center; 
+color: var(--primary);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
 gap: 10px;
-} 
+}
 
 .strategy-buttons{
-display: grid; 
-grid-template-columns: repeat(3, 1fr); 
-gap: 10px; 
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
 margin-bottom: 20px;
-} 
+}
 
 .strategy-btn{
-padding: 15px 10px; 
-background:#f3f4f6; 
-border-radius: 8px; 
-text-align: center; 
-cursor: pointer; 
-transition: var(--transition); 
+padding: 15px 10px;
+background:#f3f4f6;
+border-radius: 8px;
+text-align: center;
+cursor: pointer;
+transition: var(--transition);
 border: 2px solid transparent;
-} 
+}
 
 .strategy-btn:hover{
-transform: translateY(-2px); 
+transform: translateY(-2px);
 border-color: var(--primary);
-} 
+}
 
 .strategy-btn.active{
-background: var(--primary); 
-color: white; 
+background: var(--primary);
+color: white;
 border-color: var(--primary);
-} 
+}
 
 .input-row{
-display: flex; 
-align-items: center; 
-gap: 10px; 
+display: flex;
+align-items: center;
+gap: 10px;
 margin-bottom: 15px;
-} 
+}
 
 .input-row label{
-font-weight: bold; 
-color: var(--dark); 
+font-weight: bold;
+color: var(--dark);
 min-width: 60px;
-} 
+}
 
 .input-row input{
-width: 80px; 
-padding: 8px 12px; 
-border: 2px solid #e5e7eb; 
-border-radius: 6px; 
+width: 80px;
+padding: 8px 12px;
+border: 2px solid #e5e7eb;
+border-radius: 6px;
 font-size: 1rem;
-} 
+}
 
 .input-row input:focus{
-outline: none; 
+outline: none;
 border-color: var(--primary);
-} 
+}
 
 .input-row span{
 color: var(--gray);
-} 
+}
 
 .number-option{
-padding: 10px; 
-background:#f3f4f6; 
-border-radius: 6px; 
-text-align: center; 
-cursor: pointer; 
+padding: 10px;
+background:#f3f4f6;
+border-radius: 6px;
+text-align: center;
+cursor: pointer;
 transition: var(--transition);
-} 
+}
 
 .number-option:hover{
-background: var(--primary); 
+background: var(--primary);
 color: white;
-} 
+}
 
 .number-option.active{
-background: var(--primary); 
+background: var(--primary);
 color: white;
-} 
+}
 
 .generate-btn{
 width: 100%;
-padding: 15px; 
-background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+padding: 15px;
+background: linear-gradient(135deg, var(--primary), var(--secondary));
 color: white;
 border: none;
-border-radius: 8px; 
+border-radius: 8px;
 font-size: 1.1rem;
-font-weight: bold; 
-cursor: pointer; 
-transition: var(--transition); 
-margin: 20px 0; 
-display: flex; 
-align-items: center; 
-justify-content: center; 
+font-weight: bold;
+cursor: pointer;
+transition: var(--transition);
+margin: 20px 0;
+display: flex;
+align-items: center;
+justify-content: center;
 gap: 10px;
-} 
+}
 
 .generate-btn:hover{
-transform: translateY(-2px); 
+transform: translateY(-2px);
 box-shadow: var(--shadow-lg);
-} 
+}
 
 .ticket{
-background:#f3f4f6; 
-border-radius: 8px; 
-padding: 15px; 
+background:#f3f4f6;
+border-radius: 8px;
+padding: 15px;
 margin-top: 20px;
-} 
+display: none;
+}
 
 .ticket-header{
-display: flex; 
+display: flex;
 justify-content: space-between;
-align-items: center; 
-margin-bottom: 15px; 
-padding-bottom: 10px; 
+align-items: center;
+margin-bottom: 15px;
+padding-bottom: 10px;
 border-bottom: 2px solid #e5e7eb;
-} 
+}
 
 .ticket-header h4{
-color: var(--primary); 
+color: var(--primary);
 font-size: 1.1rem;
-} 
+}
 
 .ticket-header p{
-color: var(--gray); 
+color: var(--gray);
 font-size: 0.9rem;
-} 
+}
 
 .ticket-combination{
-display: flex; 
-align-items: center; 
-gap: 10px; 
-padding: 10px; 
-background: white; 
-border-radius: 6px; 
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px;
+background: white;
+border-radius: 6px;
 margin-bottom: 8px;
-} 
+}
 
 .ticket-number{
-width: 25px; 
-height: 25px; 
-background: var(--primary); 
+width: 25px;
+height: 25px;
+background: var(--primary);
 color: white;
 border-radius: 50%;
-display: flex; 
-align-items: center; 
-justify-content: center; 
+display: flex;
+align-items: center;
+justify-content: center;
 font-size: 0.8rem;
 font-weight: bold;
-} 
+flex-shrink: 0;
+}
 
 .ticket-actions{
-display: flex; 
-gap: 10px; 
+display: flex;
+gap: 10px;
 margin-top: 15px;
-} 
+}
 
 .ticket-btn{
 flex: 1;
-padding: 10px; 
+padding: 10px;
 border: none;
-border-radius: 6px; 
-cursor: pointer; 
-font-weight: bold; 
-display: flex; 
+border-radius: 6px;
+cursor: pointer;
+font-weight: bold;
+display: flex;
 align-items: center;
-justify-content: center; 
-gap: 5px; 
+justify-content: center;
+gap: 5px;
 transition: var(--transition);
-} 
+}
+
+.ticket-btn:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 
 .save-btn{
-background: var(--success); 
+background: var(--success);
 color: white;
-} 
+}
 
 .share-btn{
-background: var(--info); 
+background: var(--info);
 color: white;
-} 
+}
 
-.ticket-btn:hover{
+.ticket-btn:hover:not(:disabled){
 transform: translateY(-2px);
-} 
+}
 
 .filters-panel{
-display: flex; 
+display: flex;
 flex-direction: column;
 gap: 15px;
-} 
+}
 
 .filter-group{
-padding: 15px; 
-background:#f9fafb; 
-border-radius: 8px; 
+padding: 15px;
+background:#f9fafb;
+border-radius: 8px;
 border-left: 4px solid var(--primary);
-} 
+}
 
 .filter-title{
-font-weight: bold; 
-color: var(--dark); 
-margin-bottom: 10px; 
+font-weight: bold;
+color: var(--dark);
+margin-bottom: 10px;
 font-size: 0.95rem;
-} 
+}
 
 .range-control{
-display: flex; 
-align-items: center; 
+display: flex;
+align-items: center;
 gap: 10px;
-} 
+}
 
 .range-control input{
-width: 80px; 
-padding: 8px 12px; 
-border: 2px solid #e5e7eb; 
-border-radius: 6px; 
+width: 80px;
+padding: 8px 12px;
+border: 2px solid #e5e7eb;
+border-radius: 6px;
 font-size: 1rem;
-} 
+}
 
 .range-control input:focus{
-outline: none; 
+outline: none;
 border-color: var(--primary);
 }
+
 .range-control span{
 color: var(--gray);
-} 
+}
 
 .filter-options{
-display: flex; 
-flex-wrap: wrap; 
-gap: 8px; 
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
 margin-top: 10px;
-} 
+}
 
 .filter-chip{
-padding: 6px 12px; 
-background:#f3f4f6; 
-border-radius: 20px; 
+padding: 6px 12px;
+background:#f3f4f6;
+border-radius: 20px;
 font-size: 0.85rem;
-cursor: pointer; 
-transition: var(--transition); 
+cursor: pointer;
+transition: var(--transition);
 border: 2px solid transparent;
-} 
+}
 
 .filter-chip:hover{
 border-color: var(--primary);
-} 
+}
 
 .filter-chip.active{
-background: var(--primary); 
-color: white; 
+background: var(--primary);
+color: white;
 border-color: var(--primary);
-} 
+}
 
 .saved-tickets-section{
-background: white; 
-padding: 20px; 
-border-radius: var(--border-radius); 
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
 box-shadow: var(--shadow);
-} 
+}
 
 .saved-tickets-section h3{
-color: var(--primary); 
-margin-bottom: 20px; 
-display: flex; 
-align-items: center; 
+color: var(--primary);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
 gap: 10px;
-} 
+}
 
 .saved-tickets{
-display: flex; 
+display: flex;
 flex-direction: column;
 gap: 15px;
-} 
+}
 
 .saved-ticket-item{
-border: 2px solid #e5e7eb; 
-border-radius: 8px; 
+border: 2px solid #e5e7eb;
+border-radius: 8px;
 padding: 15px;
-} 
+}
 
 .saved-ticket-header{
-display: flex; 
-justify-content: space-between; 
-align-items: center; 
+display: flex;
+justify-content: space-between;
+align-items: center;
 margin-bottom: 15px;
-} 
+}
 
 .saved-ticket-date{
-font-weight: bold; 
-color: var(--dark); 
+font-weight: bold;
+color: var(--dark);
 font-size: 0.95rem;
-} 
+}
 
 .saved-ticket-actions{
-display: flex; 
+display: flex;
 gap: 10px;
-} 
+}
 
 .validate{
-background: var(--success); 
+background: var(--success);
 color: white;
 border: none;
-padding: 6px 12px; 
-border-radius: 6px; 
-cursor: pointer; 
+padding: 6px 12px;
+border-radius: 6px;
+cursor: pointer;
 font-size: 0.85rem;
-} 
+}
 
 .toggle-btn{
-background: var(--primary); 
+background: var(--primary);
 color: white;
 border: none;
-width: 30px; 
-height: 30px; 
+width: 30px;
+height: 30px;
 border-radius: 50%;
-cursor: pointer; 
+cursor: pointer;
 font-size: 1.2rem;
-display: flex; 
-align-items: center; 
+display: flex;
+align-items: center;
 justify-content: center;
-} 
+}
 
 .saved-combinations{
-margin-top: 10px; 
-padding: 10px; 
-background:#f9fafb; 
-border-radius: 6px; 
+margin-top: 10px;
+padding: 10px;
+background:#f9fafb;
+border-radius: 6px;
 display: none;
-} 
+}
 
 .saved-combination{
-display: flex; 
+display: flex;
 align-items: center;
-gap: 10px; 
-padding: 8px; 
-background: white; 
-border-radius: 4px; 
+justify-content: space-between;
+gap: 10px;
+padding: 8px;
+background: white;
+border-radius: 4px;
 margin-bottom: 5px;
-} 
+}
+
+.hit-count {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--success);
+    background-color: #e8f9f1;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
 
 .saved-combination-number{
-width: 20px; 
-height: 20px; 
-background: var(--primary); 
+width: 20px;
+height: 20px;
+background: var(--primary);
 color: white;
 border-radius: 50%;
-display: flex; 
-align-items: center; 
-justify-content: center; 
+display: flex;
+align-items: center;
+justify-content: center;
 font-size: 0.7rem;
 font-weight: bold;
+flex-shrink: 0;
+}
+
+.saved-combination-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Animation */
-@keyframes pulse { 
-  0% { transform: scale(1); } 
-  50% { transform: scale(1.05); } 
-  100% { transform: scale(1); } 
-} 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
 .number-ball.selected {
   animation: pulse 0.3s ease-in-out;
-} 
+}
 
 .generate-btn {
   animation: pulse 0.6s infinite alternate;
@@ -654,130 +712,163 @@ font-weight: bold;
 
 /* Loading */
 .loading {
-  display: none; 
-  position: fixed; 
-  top: 0; 
+  display: none;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
-  background: rgba(0, 0, 0, 0.5); 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-} 
-
-.loading-content {
-  background: white; 
-  padding: 30px; 
-  border-radius: 15px; 
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-} 
-
-.loading-spinner {
-  width: 50px; 
-  height: 50px; 
-  border: 5px solid #f3f4f6; 
-  border-top: 5px solid var(--primary); 
-  border-radius: 50%;
-  animation: spin 1s linear infinite; 
-  margin: 0 auto 20px;
-} 
-
-@keyframes spin { 
-  0% { transform: rotate(0deg); } 
-  100% { transform: rotate(360deg); } 
 }
 
-/* Modal */
+.loading-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f4f6;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal con scroll */
 .modal {
-  display: none; 
-  position: fixed; 
-  top: 0; 
+  display: none;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
-  background: rgba(0, 0, 0, 0.5); 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-} 
+  padding: 20px;
+}
 
 .modal-content {
-  background: white; 
-  padding: 30px; 
-  border-radius: 15px; 
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
   width: 90%;
-  max-width: 500px; 
+  max-width: 500px;
+  max-height: 80vh;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-} 
+  display: flex;
+  flex-direction: column;
+}
 
 .modal-header {
   margin-bottom: 20px;
-} 
+  flex-shrink: 0;
+}
 
 .modal-header h3 {
-  color: var(--primary); 
+  color: var(--primary);
   margin-bottom: 10px;
-} 
+}
 
 .modal-input {
   width: 100%;
-  padding: 12px; 
-  border: 2px solid #e5e7eb; 
+  padding: 12px;
+  border: 2px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
   margin-bottom: 20px;
-} 
+  flex-shrink: 0;
+}
 
 .modal-input:focus {
-  outline: none; 
+  outline: none;
   border-color: var(--primary);
-} 
+}
+
+#validationResults {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 300px;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+#validationResults::-webkit-scrollbar {
+  width: 8px;
+}
+
+#validationResults::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#validationResults::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+#validationResults::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
 
 .modal-actions {
-  display: flex; 
-  gap: 10px; 
+  display: flex;
+  gap: 10px;
   justify-content: flex-end;
-} 
+  flex-shrink: 0;
+}
 
 .modal-btn {
-  padding: 10px 20px; 
+  padding: 10px 20px;
   border: none;
-  border-radius: 6px; 
-  cursor: pointer; 
+  border-radius: 6px;
+  cursor: pointer;
   font-weight: bold;
-} 
+}
 
 .modal-btn.cancel {
-  background: #f3f4f6; 
+  background: #f3f4f6;
   color: var(--dark);
-} 
+}
 
 .modal-btn.confirm {
-  background: var(--success); 
+  background: var(--success);
   color: white;
 }
 
 /* Toast */
 .toast {
-  position: fixed; 
-  bottom: 20px; 
-  right: 20px; 
-  padding: 15px 20px; 
-  border-radius: 8px; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
   color: white;
-  font-weight: bold; 
+  font-weight: bold;
   z-index: 1000;
-  opacity: 0; 
-  transform: translateY(20px); 
+  opacity: 0;
+  transform: translateY(20px);
   transition: all 0.3s ease;
-} 
+}
 
 .toast.show {
-  opacity: 1; 
+  opacity: 1;
   transform: translateY(0);
-} 
+}
 
 .toast.success {
   background: var(--success);
@@ -790,127 +881,85 @@ font-weight: bold;
 .toast.warning {
   background: var(--warning);
 }
-</style> 
+</style>
 </head>
-<body> 
+<body>
   <div class="container">
-    <header class="header"> 
-      <h1>🎲 DataLotto49</h1> 
-      <p>Generador Inteligente de Combinaciones Ganadoras</p> 
+    <header class="header">
+      <h1>🎲 DataLotto49</h1>
+      <p>Generador Inteligente de Combinaciones Ganadoras</p>
     </header>
-    
-    <div class="main-grid"> 
-      <div class="game-section"> 
-        <div class="selected-numbers"> 
-          <h3>🎯 Números Seleccionados</h3> 
-          <div class="selected-display" id="selectedDisplay"> 
-            <div style="color:#666; font-style: italic;">Selecciona hasta 6 números</div> 
+
+    <div class="main-grid">
+      <div class="game-section">
+        <div class="selected-numbers">
+          <h3>🎯 Números Seleccionados</h3>
+          <div class="selected-display" id="selectedDisplay">
+            <div style="color:#666; font-style: italic;">Selecciona hasta 6 números</div>
           </div>
         </div>
-        
+
         <div class="number-selection-section">
           <div class="number-selection-header">
             <h3>Selección de números</h3>
             <div class="selection-mode-controls">
-              <button class="selection-mode-btn active" data-mode="cold"> 
-                <span class="icon">❄</span> 
+              <button class="selection-mode-btn active" data-mode="cold" title="Marcar/Desmarcar números fríos">
+                <span class="icon">❄</span>
               </button>
-              <button class="selection-mode-btn" data-mode="hot"> 
-                <span class="icon">🔥</span> 
+              <button class="selection-mode-btn" data-mode="hot" title="Marcar/Desmarcar números calientes">
+                <span class="icon">🔥</span>
               </button>
-              <button class="selection-mode-btn" data-mode="excluded"> 
-                <span class="icon">🚫</span> 
+              <button class="selection-mode-btn" data-mode="excluded" title="Marcar/Desmarcar números excluidos">
+                <span class="icon">🚫</span>
+              </button>
+              <button class="selection-mode-btn" id="randomBtn" title="Seleccionar 6 números al azar">
+                <span class="icon">🎲</span>
+              </button>
+              <button class="selection-mode-btn" id="clearBtn" title="Limpiar todas las selecciones">
+                <span class="icon">🗑️</span>
               </button>
             </div>
           </div>
-          
-          <div class="numbers-grid" id="numbersGrid"> 
-            <div class="number-ball" data-number="1"><span>1</span></div> 
-            <div class="number-ball" data-number="2"><span>2</span></div> 
-            <div class="number-ball" data-number="3"><span>3</span></div> 
-            <div class="number-ball" data-number="4"><span>4</span></div> 
-            <div class="number-ball" data-number="5"><span>5</span></div> 
-            <div class="number-ball" data-number="6"><span>6</span></div> 
-            <div class="number-ball" data-number="7"><span>7</span></div> 
-            <div class="number-ball" data-number="8"><span>8</span></div> 
-            <div class="number-ball" data-number="9"><span>9</span></div> 
-            <div class="number-ball" data-number="10"><span>10</span></div>
-            <div class="number-ball" data-number="11"><span>11</span></div> 
-            <div class="number-ball" data-number="12"><span>12</span></div> 
-            <div class="number-ball" data-number="13"><span>13</span></div> 
-            <div class="number-ball" data-number="14"><span>14</span></div> 
-            <div class="number-ball" data-number="15"><span>15</span></div> 
-            <div class="number-ball" data-number="16"><span>16</span></div> 
-            <div class="number-ball" data-number="17"><span>17</span></div> 
-            <div class="number-ball" data-number="18"><span>18</span></div> 
-            <div class="number-ball" data-number="19"><span>19</span></div> 
-            <div class="number-ball" data-number="20"><span>20</span></div> 
-            <div class="number-ball" data-number="21"><span>21</span></div> 
-            <div class="number-ball" data-number="22"><span>22</span></div> 
-            <div class="number-ball" data-number="23"><span>23</span></div> 
-            <div class="number-ball" data-number="24"><span>24</span></div> 
-            <div class="number-ball" data-number="25"><span>25</span></div> 
-            <div class="number-ball" data-number="26"><span>26</span></div> 
-            <div class="number-ball" data-number="27"><span>27</span></div> 
-            <div class="number-ball" data-number="28"><span>28</span></div> 
-            <div class="number-ball" data-number="29"><span>29</span></div> 
-            <div class="number-ball" data-number="30"><span>30</span></div> 
-            <div class="number-ball" data-number="31"><span>31</span></div> 
-            <div class="number-ball" data-number="32"><span>32</span></div> 
-            <div class="number-ball" data-number="33"><span>33</span></div> 
-            <div class="number-ball" data-number="34"><span>34</span></div> 
-            <div class="number-ball" data-number="35"><span>35</span></div> 
-            <div class="number-ball" data-number="36"><span>36</span></div> 
-            <div class="number-ball" data-number="37"><span>37</span></div> 
-            <div class="number-ball" data-number="38"><span>38</span></div> 
-            <div class="number-ball" data-number="39"><span>39</span></div> 
-            <div class="number-ball" data-number="40"><span>40</span></div> 
-            <div class="number-ball" data-number="41"><span>41</span></div> 
-            <div class="number-ball" data-number="42"><span>42</span></div> 
-            <div class="number-ball" data-number="43"><span>43</span></div> 
-            <div class="number-ball" data-number="44"><span>44</span></div> 
-            <div class="number-ball" data-number="45"><span>45</span></div> 
-            <div class="number-ball" data-number="46"><span>46</span></div> 
-            <div class="number-ball" data-number="47"><span>47</span></div> 
-            <div class="number-ball" data-number="48"><span>48</span></div> 
-            <div class="number-ball" data-number="49"><span>49</span></div> 
+
+          <div class="numbers-grid" id="numbersGrid">
+            <!-- Matriz 10x5: Los números se generan dinámicamente -->
           </div>
         </div>
-        
-        <div class="stats-section"> 
-          <h3>📊 Estadísticas en Tiempo Real</h3> 
-          <div class="stats-grid" id="statsGrid"> 
+
+        <div class="stats-section">
+          <h3>📊 Estadísticas en Tiempo Real</h3>
+          <div class="stats-grid" id="statsGrid">
             <div class="stat-item">
               <div class="stat-label">Suma Total</div>
               <div class="stat-value" id="statSuma">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Par/Impar</div> 
-              <div class="stat-value" id="statParImpar">-</div> 
+              <div class="stat-label">Par/Impar</div>
+              <div class="stat-value" id="statParImpar">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Bajos/Altos</div> 
-              <div class="stat-value" id="statBajosAltos">-</div> 
+              <div class="stat-label">Bajos/Altos</div>
+              <div class="stat-value" id="statBajosAltos">-</div>
             </div>
             <div class="stat-item">
               <div class="stat-label">Decenas</div>
               <div class="stat-value" id="statDecenas">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Agrup. Decenas</div> 
-              <div class="stat-value" id="statAgrupDecenas">-</div> 
+              <div class="stat-label">Agrup. Decenas</div>
+              <div class="stat-value" id="statAgrupDecenas">-</div>
             </div>
             <div class="stat-item">
               <div class="stat-label">Consecutivos</div>
               <div class="stat-value" id="statConsecutivos">-</div>
             </div>
             <div class="stat-item">
-              <div class="stat-label">Suma Dígitos</div> 
-              <div class="stat-value" id="statSumaDigitos">-</div> 
+              <div class="stat-label">Suma Dígitos</div>
+              <div class="stat-value" id="statSumaDigitos">-</div>
             </div>
             <div class="stat-item">
               <div class="stat-label">Números Primos</div>
-              <div class="stat-value" id="statPrimos">-</div> 
+              <div class="stat-value" id="statPrimos">-</div>
             </div>
             <div class="stat-item">
               <div class="stat-label">Desviación</div>
@@ -918,184 +967,165 @@ font-weight: bold;
             </div>
             <div class="stat-item">
               <div class="stat-label">Patrones</div>
-              <div class="stat-value" id="statPatrones">-</div> 
+              <div class="stat-value" id="statPatrones">-</div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div class="sidebar">
-        <div class="panel"> 
-          <h3>♟ Estrategia de Juego</h3> 
-          <div class="strategy-buttons"> 
-            <div class="strategy-btn active" data-strategy="simple"> 
-              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎯</div> 
-              <div>Simple</div> 
+        <div class="panel">
+          <h3>♟ Estrategia de Juego</h3>
+          <div class="strategy-buttons">
+            <div class="strategy-btn active" data-strategy="simple">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎯</div>
+              <div>Simple</div>
             </div>
             <div class="strategy-btn" data-strategy="winning">
-              <div style="font-size: 1.5rem; margin-bottom: 5px;">🏆</div> 
-              <div>Estrategia Ganadora</div> 
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🏆</div>
+              <div>Estrategia Ganadora</div>
             </div>
-            <div class="strategy-btn" data-strategy="multiple"> 
-              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎰</div> 
-              <div>Múltiple</div> 
+            <div class="strategy-btn" data-strategy="multiple">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎰</div>
+              <div>Múltiple</div>
             </div>
           </div>
-          
-          <!-- Opciones para Estrategia Ganadora -->
-          <div class="multiple-options" id="winningOptions" style="display: none;"> 
-            <div class="input-row"> 
+
+          <div class="multiple-options" id="winningOptions" style="display: none;">
+            <div class="input-row">
               <label>Generar:</label>
-              <input type="number" id="generateCount" value="100" min="10" max="1000"> 
-              <span>combinaciones</span> 
+              <input type="number" id="generateCount" value="100" min="10" max="1000">
+              <span>combinaciones</span>
             </div>
-            <div class="input-row"> 
-              <label>Jugar:</label> 
-              <input type="number" id="playCount" value="10" min="1" max="100"> 
-              <span>mejores</span> 
+            <div class="input-row">
+              <label>Jugar:</label>
+              <input type="number" id="playCount" value="10" min="1" max="100">
+              <span>mejores</span>
             </div>
           </div>
-          
-          <!-- Opciones para Múltiple -->
-          <div class="multiple-numbers-options" id="multipleNumbersOptions" style="display: none;"> 
+
+          <div class="multiple-numbers-options" id="multipleNumbersOptions" style="display: none;">
             <div class="numbers-select">
-              <label>¿Cuántos números quieres seleccionar?</label> 
-              <div class="number-option active" data-numbers="7">7 números</div> 
-              <div class="number-option" data-numbers="8">8 números</div> 
-              <div class="number-option" data-numbers="9">9 números</div> 
-              <div class="number-option" data-numbers="10">10 números</div> 
-              <div class="number-option" data-numbers="11">11 números</div> 
+              <label>¿Cuántos números quieres seleccionar?</label>
+              <div class="number-option active" data-numbers="7">7 números</div>
+              <div class="number-option" data-numbers="8">8 números</div>
+              <div class="number-option" data-numbers="9">9 números</div>
+              <div class="number-option" data-numbers="10">10 números</div>
+              <div class="number-option" data-numbers="11">11 números</div>
             </div>
-          </div> 
-          
-          <button class="generate-btn" id="generateBtn">🍀 Generar Combinación</button> 
-          
+          </div>
+
+          <button class="generate-btn" id="generateBtn">🍀 Generar Combinación</button>
+
           <div class="ticket" id="ticket">
-            <div class="ticket-header"> 
-              <h4>🎫 Tu Boleto Ganador</h4> 
-              <p id="ticketDate">08/08/2025 10:30:15</p> 
+            <div class="ticket-header">
+              <h4>🎫 Tu Boleto Ganador</h4>
+              <p id="ticketDate"></p>
             </div>
-            <div id="ticketCombinations">
-              <div class="ticket-combination">
-                <div class="ticket-number">1</div>
-                <div>07-14-23-31-42-49</div>
-              </div>
-            </div>
-            <div class="ticket-actions"> 
-              <button class="ticket-btn save-btn" id="saveBtn">💾 Guardar Boleto</button> 
-              <button class="ticket-btn share-btn" id="shareBtn">📤 Compartir</button> 
+            <div id="ticketCombinations"></div>
+            <div class="ticket-actions">
+              <button class="ticket-btn save-btn" id="saveBtn">💾 Guardar Boleto</button>
+              <button class="ticket-btn share-btn" id="shareBtn">📤 Compartir</button>
             </div>
           </div>
         </div>
-        
-        <div class="panel"> 
-          <h3>⚙ Filtros Inteligentes</h3> 
-          <div class="filters-panel"> 
-            <div class="filter-group"> 
-              <div class="filter-title">🎯 Suma Total</div> 
-              <div class="range-control"> 
-                <input type="number" id="sumMin" value="140" min="21" max="279"> 
-                <span>a</span> 
-                <input type="number" id="sumMax" value="169" min="21" max="279"> 
+
+        <div class="panel">
+          <h3>⚙ Filtros Inteligentes</h3>
+          <div class="filters-panel">
+            <div class="filter-group">
+              <div class="filter-title">🎯 Suma Total</div>
+              <div class="range-control">
+                <input type="number" id="sumMin" value="140" min="21" max="279">
+                <span>a</span>
+                <input type="number" id="sumMax" value="169" min="21" max="279">
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">⚖ Par/Impar</div> 
-              <div class="filter-options" id="parImparOptions"> 
-                <div class="filter-chip" data-value="6/0">6/0</div> 
-                <div class="filter-chip" data-value="5/1">5/1</div> 
-                <div class="filter-chip active" data-value="4/2">4/2</div> 
-                <div class="filter-chip active" data-value="3/3">3/3</div> 
-                <div class="filter-chip active" data-value="2/4">2/4</div> 
-                <div class="filter-chip" data-value="1/5">1/5</div> 
-                <div class="filter-chip" data-value="0/6">0/6</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">⚖ Par/Impar</div>
+              <div class="filter-options" id="parImparOptions">
+                <div class="filter-chip" data-value="6/0">6/0</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="2/4">2/4</div>
+                <div class="filter-chip" data-value="1/5">1/5</div>
+                <div class="filter-chip" data-value="0/6">0/6</div>
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">📊 Bajos/Altos(1-25/26-49)</div> 
-              <div class="filter-options" id="bajosAltosOptions"> 
-                <div class="filter-chip" data-value="6/0">6/0</div> 
-                <div class="filter-chip" data-value="5/1">5/1</div> 
-                <div class="filter-chip active" data-value="4/2">4/2</div> 
-                <div class="filter-chip active" data-value="3/3">3/3</div> 
-                <div class="filter-chip active" data-value="2/4">2/4</div> 
-                <div class="filter-chip" data-value="1/5">1/5</div> 
-                <div class="filter-chip" data-value="0/6">0/6</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">📊 Bajos/Altos(1-25/26-49)</div>
+              <div class="filter-options" id="bajosAltosOptions">
+                <div class="filter-chip" data-value="6/0">6/0</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="2/4">2/4</div>
+                <div class="filter-chip" data-value="1/5">1/5</div>
+                <div class="filter-chip" data-value="0/6">0/6</div>
               </div>
             </div>
-            
-            <!-- Filtro de Decenas oculto pero presente en el código -->
-            <div class="filter-group" style="display: none;"> 
-              <div class="filter-title">🔢 Decenas</div> 
-              <div class="filter-options" id="decenasOptions"> 
-                <div class="filter-chip active" data-value="1-9">1-9</div> 
-                <div class="filter-chip active" data-value="10-19">10-19</div> 
-                <div class="filter-chip active" data-value="20-29">20-29</div> 
-                <div class="filter-chip active" data-value="30-39">30-39</div> 
-                <div class="filter-chip active" data-value="40-49">40-49</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">🔢 Agrupación por Decenas</div>
+              <div class="filter-options" id="agrupDecenasOptions">
+                <div class="filter-chip active" data-value="6">6</div>
+                <div class="filter-chip active" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="4/1/1">4/1/1</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="3/2/1">3/2/1</div>
+                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div>
+                <div class="filter-chip active" data-value="2/2/2">2/2/2</div>
+                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div>
+                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div>
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">🔢 Agrupación por Decenas</div> 
-              <div class="filter-options" id="agrupDecenasOptions"> 
-                <div class="filter-chip active" data-value="6">6</div> 
-                <div class="filter-chip active" data-value="5/1">5/1</div> 
-                <div class="filter-chip active" data-value="4/2">4/2</div> 
-                <div class="filter-chip active" data-value="4/1/1">4/1/1</div> 
-                <div class="filter-chip active" data-value="3/3">3/3</div> 
-                <div class="filter-chip active" data-value="3/2/1">3/2/1</div> 
-                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div> 
-                <div class="filter-chip active" data-value="2/2/2">2/2/2</div> 
-                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div> 
-                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">🔗 Números Consecutivos</div>
+              <div class="filter-options" id="consecutivosOptions">
+                <div class="filter-chip active" data-value="6">6</div>
+                <div class="filter-chip active" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="4/1/1">4/1/1</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="3/2/1">3/2/1</div>
+                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div>
+                <div class="filter-chip active" data-value="2/2/2">2/2/2</div>
+                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div>
+                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div>
+                <div class="filter-chip active" data-value="1/1/1/1/1/1">1/1/1/1/1/1</div>
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">🔗 Números Consecutivos</div> 
-              <div class="filter-options" id="consecutivosOptions"> 
-                <div class="filter-chip active" data-value="6">6</div> 
-                <div class="filter-chip active" data-value="5/1">5/1</div> 
-                <div class="filter-chip active" data-value="4/2">4/2</div> 
-                <div class="filter-chip active" data-value="4/1/1">4/1/1</div> 
-                <div class="filter-chip active" data-value="3/3">3/3</div> 
-                <div class="filter-chip active" data-value="3/2/1">3/2/1</div> 
-                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div> 
-                <div class="filter-chip active" data-value="2/2/2">2/2/2</div> 
-                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div> 
-                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div> 
-                <div class="filter-chip active" data-value="1/1/1/1/1/1">1/1/1/1/1/1</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">❌ Excluir Terminaciones</div>
+              <div class="filter-options" id="terminacionesExcluidasOptions">
+                <div class="filter-chip" data-value="0">*0</div>
+                <div class="filter-chip" data-value="1">*1</div>
+                <div class="filter-chip" data-value="2">*2</div>
+                <div class="filter-chip" data-value="3">*3</div>
+                <div class="filter-chip" data-value="4">*4</div>
+                <div class="filter-chip" data-value="5">*5</div>
+                <div class="filter-chip" data-value="6">*6</div>
+                <div class="filter-chip" data-value="7">*7</div>
+                <div class="filter-chip" data-value="8">*8</div>
+                <div class="filter-chip" data-value="9">*9</div>
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">❌ Excluir Terminaciones</div> 
-              <div class="filter-options" id="terminacionesExcluidasOptions"> 
-                <div class="filter-chip" data-value="0">*0</div> 
-                <div class="filter-chip" data-value="1">*1</div> 
-                <div class="filter-chip" data-value="2">*2</div> 
-                <div class="filter-chip" data-value="3">*3</div> 
-                <div class="filter-chip" data-value="4">*4</div> 
-                <div class="filter-chip" data-value="5">*5</div> 
-                <div class="filter-chip" data-value="6">*6</div> 
-                <div class="filter-chip" data-value="7">*7</div> 
-                <div class="filter-chip" data-value="8">*8</div> 
-                <div class="filter-chip" data-value="9">*9</div> 
-              </div>
-            </div>
-            
-            <div class="filter-group"> 
+
+            <div class="filter-group">
               <div class="filter-title">∑ Suma de Dígitos</div>
-              <div class="range-control"> 
-                <input type="number" id="sumaDigitosMin" value="10" min="6" max="45"> 
-                <span>a</span> 
-                <input type="number" id="sumaDigitosMax" value="35" min="6" max="45"> 
+              <div class="range-control">
+                <input type="number" id="sumaDigitosMin" value="28" min="21" max="63">
+                <span>a</span>
+                <input type="number" id="sumaDigitosMax" value="45" min="21" max="63">
               </div>
-            </div> 
-            
+            </div>
+
             <div class="filter-group">
               <div class="filter-title">🔢 Números Primos</div>
               <div class="range-control">
@@ -1106,68 +1136,67 @@ font-weight: bold;
                 <span>primos</span>
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">📊 Desviación Estándar</div> 
-              <div class="range-control"> 
-                <input type="number" id="desviacionMin" value="10.5" min="0" max="20" step="0.1"> 
-                <span>a</span> 
-                <input type="number" id="desviacionMax" value="15.0" min="0" max="20" step="0.1"> 
+
+            <div class="filter-group">
+              <div class="filter-title">📊 Desviación Estándar</div>
+              <div class="range-control">
+                <input type="number" id="desviacionMin" value="12.0" min="1" max="24" step="0.1">
+                <span>a</span>
+                <input type="number" id="desviacionMax" value="18.0" min="1" max="24" step="0.1">
               </div>
             </div>
-            
-            <div class="filter-group"> 
-              <div class="filter-title">🚫 Excluir Patrones</div> 
-              <div class="filter-options" id="patronesOptions"> 
-                <div class="filter-chip" data-value="fibonacci">❌ Fibonacci</div> 
-                <div class="filter-chip" data-value="paresConsecutivos">❌ Pares consecutivos</div> 
-                <div class="filter-chip" data-value="multiplos">❌ Múltiplos</div> 
+
+            <div class="filter-group">
+              <div class="filter-title">🚫 Excluir Patrones</div>
+              <div class="filter-options" id="patronesOptions">
+                <div class="filter-chip" data-value="fibonacci">❌ Fibonacci</div>
+                <div class="filter-chip" data-value="paresConsecutivos">❌ Pares consecutivos</div>
+                <div class="filter-chip" data-value="multiplos">❌ Múltiplos</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Saved Tickets Section -->
-    <div class="saved-tickets-section"> 
-      <h3>🗂 Boletos Guardados</h3> 
+    <div class="saved-tickets-section">
+      <h3>🗂 Boletos Guardados</h3>
       <div class="saved-tickets" id="savedTickets">
-        <div style="color:#666; text-align: center; padding: 20px;"> No tienes boletos guardados</div> 
+        <div style="color:#666; text-align: center; padding: 20px;">No tienes boletos guardados</div>
       </div>
     </div>
-    
+
     <!-- Loading Modal -->
-    <div class="loading" id="loadingModal"> 
-      <div class="loading-content"> 
+    <div class="loading" id="loadingModal">
+      <div class="loading-content">
         <div class="loading-spinner"></div>
         <h3 id="loadingText">Generando combinación...</h3>
-        <p>Intentos: <span id="loadingAttempts">0</span></p> 
+        <p>Intentos: <span id="loadingAttempts">0</span></p>
       </div>
     </div>
-    
+
     <!-- Validation Modal -->
     <div class="modal" id="validationModal">
       <div class="modal-content">
-        <div class="modal-header"> 
-          <h3>🔍 Validar Boleto</h3> 
-          <p>Introduce los 6 números ganadores separados por espacios</p> 
+        <div class="modal-header">
+          <h3>🔍 Validar Boleto</h3>
+          <p>Introduce los 6 números ganadores separados por espacios, comas o puntos.</p>
         </div>
-        <input type="text" class="modal-input" id="winningNumbersInput" placeholder="7 12 23 31 42 49" maxlength="20"> 
+        <input type="text" class="modal-input" id="winningNumbersInput" placeholder="7, 12. 23 31,42.49" maxlength="23">
         <div id="validationResults"></div>
         <div class="modal-actions">
-          <button class="modal-btn cancel" id="cancelValidationBtn">Cancelar</button>
+          <button class="modal-btn cancel" id="cancelValidationBtn">Cerrar</button>
           <button class="modal-btn confirm" id="confirmValidationBtn">Validar</button>
         </div>
       </div>
     </div>
-    
+
     <!-- Toast -->
     <div class="toast" id="toast"></div>
   </div>
 
   <script>
-    // Clase principal del sistema
     class DataLotto49Advanced {
       constructor() {
         // Estado del sistema
@@ -1185,296 +1214,278 @@ font-weight: bold;
         this.analysisPeriod = 100;
         this.hotThreshold = 1.5;
         this.coldThreshold = 0.5;
-        
+
         // Filtros
         this.filters = {
           sum: { min: 140, max: 169 },
           parImpar: ['4/2', '3/3', '2/4'],
           bajosAltos: ['4/2', '3/3', '2/4'],
-          decenas: ['1-9', '10-19', '20-29', '30-39', '40-49'],
           agrupDecenas: ['6', '5/1', '4/2', '4/1/1', '3/3', '3/2/1', '3/1/1/1', '2/2/2', '2/2/1/1', '2/1/1/1/1'],
           consecutivos: ['6', '5/1', '4/2', '4/1/1', '3/3', '3/2/1', '3/1/1/1', '2/2/2', '2/2/1/1', '2/1/1/1/1', '1/1/1/1/1/1'],
           terminaciones: [],
-          sumaDigitos: { min: 10, max: 35 },
+          sumaDigitos: { min: 28, max: 45 },
           primos: { min: 2, max: 3 },
-          desviacion: { min: 10.5, max: 15.0 },
+          desviacion: { min: 12.0, max: 18.0 },
           patrones: []
         };
-        
+
         // Inicializar
         this.initializeHistoricalData();
         this.initializeNumberStats();
         this.analyzeNumbers();
+        this.createNumbersGrid();
         this.loadSavedTickets();
         this.bindEvents();
+        this.updateFilters();
       }
-      
+
+      // Crear matriz 10x5
+      createNumbersGrid() {
+        const grid = document.getElementById('numbersGrid');
+        grid.innerHTML = '';
+        
+        // Matriz 10x5: Fila 1: 1-10, Fila 2: 11-20, Fila 3: 21-30, Fila 4: 31-40, Fila 5: 41-49
+        for(let fila = 0; fila < 5; fila++) {
+          for(let col = 0; col < 10; col++) {
+            const numero = fila * 10 + col + 1;
+            
+            // Última fila solo hasta 49
+            if(numero > 49) break;
+            
+            const ball = document.createElement('div');
+            ball.className = 'number-ball';
+            ball.dataset.number = numero;
+            ball.innerHTML = `<span>${numero}</span>`;
+            ball.addEventListener('click', () => this.handleNumberClick(numero, ball));
+            grid.appendChild(ball);
+          }
+        }
+      }
+
       // Inicialización de datos históricos
       initializeHistoricalData() {
-        const baseDate = new Date(); 
+        const baseDate = new Date();
         baseDate.setDate(baseDate.getDate() - 1000);
-        
+
         for(let i = 0; i < 500; i++) {
-          const drawDate = new Date(baseDate); 
-          drawDate.setDate(drawDate.getDate() + (i * 3.5)); 
+          const drawDate = new Date(baseDate);
+          drawDate.setDate(drawDate.getDate() + (i * 3.5));
           const numbers = this.generateRealisticDraw(i);
           this.historicalData.push({
             id: i + 1,
-            date: drawDate, 
+            date: drawDate,
             numbers: numbers.sort((a, b) => a - b),
             sum: numbers.reduce((a, b) => a + b, 0)
           });
         }
       }
-      
+
       // Generación de sorteos realistas
       generateRealisticDraw(drawIndex) {
         const numbers = new Set();
         const ranges = [
-          { min: 1, max: 9, target: 1, weight: 0.8 }, 
-          { min: 10, max: 19, target: 1, weight: 1.0 }, 
-          { min: 20, max: 29, target: 1, weight: 1.0 }, 
+          { min: 1, max: 9, target: 1, weight: 0.8 },
+          { min: 10, max: 19, target: 1, weight: 1.0 },
+          { min: 20, max: 29, target: 1, weight: 1.0 },
           { min: 30, max: 39, target: 1, weight: 1.0 },
           { min: 40, max: 49, target: 1, weight: 0.8 }
         ];
-        
+
         while(numbers.size < 6) {
-          const totalWeight = ranges.reduce((sum, r) => sum + r.weight, 0); 
-          let rand = Math.random() * totalWeight; 
+          const totalWeight = ranges.reduce((sum, r) => sum + r.weight, 0);
+          let rand = Math.random() * totalWeight;
           let selectedRange = null;
-          
+
           for(const range of ranges) {
             rand -= range.weight;
             if(rand <= 0) {
-              selectedRange = range; 
-              break; 
+              selectedRange = range;
+              break;
             }
           }
-          
+
           if(selectedRange) {
             let attempts = 0;
             while(attempts < 10) {
               const num = Math.floor(Math.random() * (selectedRange.max - selectedRange.min + 1)) + selectedRange.min;
               if(!numbers.has(num)) {
-                numbers.add(num); 
+                numbers.add(num);
                 break;
               }
               attempts++;
             }
           }
         }
-        
+
         return Array.from(numbers);
       }
-      
+
       // Inicialización de estadísticas de números
-      initializeNumberStats() { 
-        for(let i = 1; i <= 49; i++) { 
+      initializeNumberStats() {
+        for(let i = 1; i <= 49; i++) {
           this.numberStats[i] = {
-            frequency: 0, 
-            lastAppearance: -1, 
-            relativeFreq: 0, 
+            frequency: 0,
+            lastAppearance: -1,
+            relativeFreq: 0,
             trend: 0,
-            cycle: 0, 
-            score: 0 
+            cycle: 0,
+            score: 0
           };
         }
       }
-      
+
       // Análisis de números
       analyzeNumbers() {
         this.initializeNumberStats();
-        
-        const analysisData = this.historicalData.slice(-this.analysisPeriod); 
+
+        const analysisData = this.historicalData.slice(-this.analysisPeriod);
         const totalDraws = analysisData.length;
-        
-        analysisData.forEach((draw, index) => { 
+
+        analysisData.forEach((draw, index) => {
           draw.numbers.forEach(num => {
-            this.numberStats[num].frequency++; 
-            this.numberStats[num].lastAppearance = index; 
-          }); 
+            this.numberStats[num].frequency++;
+            this.numberStats[num].lastAppearance = index;
+          });
         });
-        
+
         for(let num = 1; num <= 49; num++) {
-          const stats = this.numberStats[num]; 
+          const stats = this.numberStats[num];
           stats.relativeFreq = (stats.frequency / totalDraws) * 100;
-          
-          const recentDraws = analysisData.slice(-20); 
-          const recentFrequency = recentDraws.filter(draw => draw.numbers.includes(num)).length; 
-          const olderDraws = analysisData.slice(-40, -20); 
-          const olderFrequency = olderDraws.filter(draw => draw.numbers.includes(num)).length; 
+
+          const recentDraws = analysisData.slice(-20);
+          const recentFrequency = recentDraws.filter(draw => draw.numbers.includes(num)).length;
+          const olderDraws = analysisData.slice(-40, -20);
+          const olderFrequency = olderDraws.filter(draw => draw.numbers.includes(num)).length;
           stats.trend = recentFrequency - olderFrequency;
-          
+
           if(stats.lastAppearance === -1) {
             stats.cycle = totalDraws;
           } else {
             stats.cycle = totalDraws - 1 - stats.lastAppearance;
           }
-          
+
           stats.score = this.calculateCompositeScore(num);
         }
-        
+
         this.classifyNumbers();
       }
-      
+
       // Cálculo de puntuación compuesta
       calculateCompositeScore(num) {
-        const stats = this.numberStats[num]; 
-        const avgFreq = this.analysisPeriod / 6; 
-        const freqComponent = (stats.frequency - avgFreq) / avgFreq; 
-        const trendComponent = Math.max(-1, Math.min(1, stats.trend)); 
-        const maxCycle = this.analysisPeriod * 0.5; 
+        const stats = this.numberStats[num];
+        const avgFreq = this.analysisPeriod / 6;
+        const freqComponent = (stats.frequency - avgFreq) / avgFreq;
+        const trendComponent = Math.max(-1, Math.min(1, stats.trend));
+        const maxCycle = this.analysisPeriod * 0.5;
         const cycleComponent = (maxCycle - stats.cycle) / maxCycle;
-        
+
         return (freqComponent * 0.4) + (trendComponent * 0.3) + (cycleComponent * 0.3);
       }
-      
+
       // Clasificación de números
       classifyNumbers() {
-        this.hotNumbers.clear(); 
+        this.hotNumbers.clear();
         this.coldNumbers.clear();
-        
+
         for(let num = 1; num <= 49; num++) {
           const score = this.numberStats[num].score;
           if(score > this.hotThreshold) {
             this.hotNumbers.add(num);
           } else if(score < this.coldThreshold) {
-            this.coldNumbers.add(num); 
+            this.coldNumbers.add(num);
           }
         }
       }
-      
+
       // Vinculación de eventos
       bindEvents() {
-        // Modo de selección
-        document.querySelectorAll('.selection-mode-btn').forEach(btn => { 
-          btn.addEventListener('click', () => {
-            document.querySelectorAll('.selection-mode-btn').forEach(b => b.classList.remove('active')); 
-            btn.classList.add('active'); 
-            this.currentSelectionMode = btn.dataset.mode; 
-          }); 
-        });
-        
-        // Estrategia de juego
-        document.querySelectorAll('.strategy-btn').forEach(btn => { 
-          btn.addEventListener('click', () => {
-            document.querySelectorAll('.strategy-btn').forEach(b => b.classList.remove('active')); 
-            btn.classList.add('active'); 
-            const strategy = btn.dataset.strategy; 
-            document.getElementById('winningOptions').style.display = strategy === 'winning' ? 'block' : 'none'; 
-            document.getElementById('multipleNumbersOptions').style.display = strategy === 'multiple' ? 'block' : 'none'; 
-          }); 
-        });
-        
-        // Opciones de números múltiples
-        document.querySelectorAll('.number-option').forEach(option => { 
-          option.addEventListener('click', () => {
-            document.querySelectorAll('.number-option').forEach(o => o.classList.remove('active')); 
-            option.classList.add('active'); 
+        // Modo de selección (SIN el botón de la mano)
+        document.querySelectorAll('.selection-mode-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            // Botones especiales
+            if (e.currentTarget.id === 'randomBtn') {
+              this.selectRandomNumbers();
+              return;
+            }
+            if (e.currentTarget.id === 'clearBtn') {
+              this.clearAllSelections();
+              return;
+            }
+            
+            // Cambio de modo normal
+            document.querySelectorAll('.selection-mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentSelectionMode = btn.dataset.mode;
           });
         });
-        
+
+        // Estrategia de juego
+        document.querySelectorAll('.strategy-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.strategy-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const strategy = btn.dataset.strategy;
+            document.getElementById('winningOptions').style.display = strategy === 'winning' ? 'block' : 'none';
+            document.getElementById('multipleNumbersOptions').style.display = strategy === 'multiple' ? 'block' : 'none';
+          });
+        });
+
+        // Opciones de números múltiples
+        document.querySelectorAll('.number-option').forEach(option => {
+          option.addEventListener('click', () => {
+            document.querySelectorAll('.number-option').forEach(o => o.classList.remove('active'));
+            option.classList.add('active');
+          });
+        });
+
         // Chips de filtros
         document.addEventListener('click', (e) => {
           if(e.target.classList.contains('filter-chip') && e.target.dataset.value) {
-            this.handleFilterClick(e.target); 
+            this.handleFilterClick(e.target);
           }
         });
-        
+
         // Inputs de rango
-        ['sumMin', 'sumMax', 'primosMin', 'primosMax', 'sumaDigitosMin', 'sumaDigitosMax', 'desviacionMin', 'desviacionMax'].forEach(id => {
-          const input = document.getElementById(id);
-          if(input) {
-            input.addEventListener('change', () => { 
-              if(id === 'primosMin' || id === 'primosMax') {
-                this.validatePrimosInputs();
-              } 
-              this.updateFilters();
-            });
-            input.addEventListener('input', () => { 
-              if(id === 'primosMin' || id === 'primosMax') { 
-                this.validatePrimosInputs();
-              }
-            });
-          }
+        const rangeInputsConfig = [
+            { minId: 'sumMin', maxId: 'sumMax', absoluteMin: 21, absoluteMax: 279, prefix: 'Suma Total', isFloat: false },
+            { minId: 'primosMin', maxId: 'primosMax', absoluteMin: 0, absoluteMax: 6, prefix: 'Números Primos', isFloat: false },
+            { minId: 'sumaDigitosMin', maxId: 'sumaDigitosMax', absoluteMin: 21, absoluteMax: 63, prefix: 'Suma de Dígitos', isFloat: false },
+            { minId: 'desviacionMin', maxId: 'desviacionMax', absoluteMin: 1.0, absoluteMax: 24.0, prefix: 'Desviación', isFloat: true },
+        ];
+
+        rangeInputsConfig.forEach(config => {
+            const minInput = document.getElementById(config.minId);
+            const maxInput = document.getElementById(config.maxId);
+            const handler = () => {
+                this.validateMinMaxInputs(config.minId, config.maxId, config.absoluteMin, config.absoluteMax, config.prefix, config.isFloat);
+                this.updateFilters();
+            };
+            if(minInput) {
+                minInput.addEventListener('change', handler);
+                minInput.addEventListener('input', handler);
+            }
+            if(maxInput) {
+                maxInput.addEventListener('change', handler);
+                maxInput.addEventListener('input', handler);
+            }
         });
-        
+
         // Botones principales
-        document.getElementById('generateBtn').addEventListener('click', () => this.generateCombination()); 
-        document.getElementById('saveBtn').addEventListener('click', () => this.saveTicket()); 
-        document.getElementById('shareBtn').addEventListener('click', () => this.shareTicket()); 
-        document.getElementById('cancelValidationBtn').addEventListener('click', () => this.closeValidationModal()); 
+        document.getElementById('generateBtn').addEventListener('click', () => this.generateCombination());
+        document.getElementById('saveBtn').addEventListener('click', () => this.saveTicket());
+        document.getElementById('shareBtn').addEventListener('click', () => this.shareTicket());
+        document.getElementById('cancelValidationBtn').addEventListener('click', () => this.closeValidationModal());
         document.getElementById('confirmValidationBtn').addEventListener('click', () => this.performValidation());
-        
-        // Bolas de números
-        document.querySelectorAll('.number-ball').forEach(ball => { 
-          ball.addEventListener('click', () => {
-            const number = parseInt(ball.dataset.number); 
-            this.handleNumberClick(number, ball); 
-          }); 
-        });
+
+        // Actualizar estado de papelera
+        this.updateClearButtonState();
       }
-      
+
       // Manejo de clic en número
-      handleFilterClick(chip) {
-        const parent = chip.parentElement; 
-        const parentId = parent.id; 
-        const value = chip.dataset.value;
+      handleNumberClick(number, ball) {
+        // Al hacer clic manual, se eliminan los números aleatorios
+        this.clearRandomPicks();
         
-        chip.classList.toggle('active');
-        this.updateFilters();
-      }
-      
-      // Validación de inputs de números primos
-      validatePrimosInputs() {
-        const minInput = document.getElementById('primosMin'); 
-        const maxInput = document.getElementById('primosMax'); 
-        if(!minInput || !maxInput) return; 
-        
-        let minValue = parseInt(minInput.value); 
-        let maxValue = parseInt(maxInput.value);
-        
-        // Validar rango 0-6
-        if(isNaN(minValue) || minValue < 0 || minValue > 6) { 
-          minValue = Math.max(0, Math.min(6, minValue || 0)); 
-          minInput.value = minValue; 
-          this.showToast('El valor mínimo debe estar entre 0 y 6', 'warning');
-        } 
-        if(isNaN(maxValue) || maxValue < 0 || maxValue > 6) { 
-          maxValue = Math.max(0, Math.min(6, maxValue || 0)); 
-          maxInput.value = maxValue; 
-          this.showToast('El valor máximo debe estar entre 0 y 6', 'warning');
-        }
-        
-        // Validar coherencia min <= max
-        if(minValue > maxValue) { 
-          minInput.value = maxValue; 
-          this.showToast('El mínimo no puede ser mayor que el máximo', 'warning');
-        }
-      }
-      
-      // Actualización de filtros
-      updateFilters() { 
-        this.filters.sum.min = parseInt(document.getElementById('sumMin').value) || 140;
-        this.filters.sum.max = parseInt(document.getElementById('sumMax').value) || 169; 
-        this.filters.primos.min = parseInt(document.getElementById('primosMin').value) || 2; 
-        this.filters.primos.max = parseInt(document.getElementById('primosMax').value) || 3;
-        this.filters.sumaDigitos.min = parseInt(document.getElementById('sumaDigitosMin').value) || 10;
-        this.filters.sumaDigitos.max = parseInt(document.getElementById('sumaDigitosMax').value) || 35;
-        this.filters.desviacion.min = parseFloat(document.getElementById('desviacionMin').value) || 10.5;
-        this.filters.desviacion.max = parseFloat(document.getElementById('desviacionMax').value) || 15.0;
-        
-        this.filters.decenas = Array.from(document.querySelectorAll('#decenasOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.agrupDecenas = Array.from(document.querySelectorAll('#agrupDecenasOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.consecutivos = Array.from(document.querySelectorAll('#consecutivosOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.terminaciones = Array.from(document.querySelectorAll('#terminacionesExcluidasOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.patrones = Array.from(document.querySelectorAll('#patronesOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.parImpar = Array.from(document.querySelectorAll('#parImparOptions .filter-chip.active')).map(chip => chip.dataset.value); 
-        this.filters.bajosAltos = Array.from(document.querySelectorAll('#bajosAltosOptions .filter-chip.active')).map(chip => chip.dataset.value);
-      }
-      
-      // Manejo de clic en número
-      handleNumberClick(number, ball) { 
         if(this.currentSelectionMode === 'excluded') {
           this.toggleExcludedNumber(number, ball);
         } else if(this.currentSelectionMode === 'hot') {
@@ -1482,81 +1493,834 @@ font-weight: bold;
         } else if(this.currentSelectionMode === 'cold') {
           this.toggleColdNumber(number, ball);
         } else {
+          // Modo selección normal para el propio juego
           this.toggleSelectedNumber(number, ball);
         }
-        
         this.calculateStats();
+        this.updateClearButtonState();
       }
-      
+
       // Toggle de números seleccionados
       toggleSelectedNumber(number, ball) {
         const index = this.selectedNumbers.indexOf(number);
         if(index > -1) {
-          this.selectedNumbers.splice(index, 1); 
+          this.selectedNumbers.splice(index, 1);
           ball.classList.remove('selected');
-        } else { 
+        } else {
           if(this.selectedNumbers.length < 6) {
-            this.selectedNumbers.push(number); 
-            ball.classList.add('selected'); 
+            this.selectedNumbers.push(number);
+            ball.classList.add('selected');
           }
         }
         this.updateDisplay();
       }
-      
+
       // Toggle de números excluidos
-      toggleExcludedNumber(number, ball) { 
+      toggleExcludedNumber(number, ball) {
         if(this.excludedNumbers.has(number)) {
-          this.excludedNumbers.delete(number); 
+          this.excludedNumbers.delete(number);
           ball.classList.remove('excluded');
         } else {
-          this.excludedNumbers.add(number); 
-          ball.classList.add('excluded'); 
+          this.excludedNumbers.add(number);
+          ball.classList.add('excluded');
         }
       }
-      
+
       // Toggle de números calientes
-      toggleHotNumber(number, ball) { 
+      toggleHotNumber(number, ball) {
         if(this.hotNumbers.has(number)) {
-          this.hotNumbers.delete(number); 
+          this.hotNumbers.delete(number);
           ball.classList.remove('hot');
         } else {
-          this.hotNumbers.add(number); 
-          ball.classList.add('hot'); 
+          this.hotNumbers.add(number);
+          ball.classList.add('hot');
         }
       }
-      
+
       // Toggle de números fríos
-      toggleColdNumber(number, ball) { 
+      toggleColdNumber(number, ball) {
         if(this.coldNumbers.has(number)) {
           this.coldNumbers.delete(number);
           ball.classList.remove('cold');
         } else {
-          this.coldNumbers.add(number); 
-          ball.classList.add('cold'); 
+          this.coldNumbers.add(number);
+          ball.classList.add('cold');
         }
       }
       
+      // Seleccionar 6 números al azar
+      selectRandomNumbers() {
+        this.clearAllSelections();
+
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1);
+        const randomPicks = new Set();
+
+        while (randomPicks.size < 6) {
+          const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+          const number = availableNumbers[randomIndex];
+          if (!randomPicks.has(number)) {
+            randomPicks.add(number);
+          }
+        }
+
+        this.selectedNumbers = Array.from(randomPicks);
+        this.selectedNumbers.forEach(num => {
+          const ball = document.querySelector(`.number-ball[data-number="${num}"]`);
+          if (ball) {
+            ball.classList.add('random-pick');
+          }
+        });
+
+        this.updateDisplay();
+        this.calculateStats();
+        this.updateClearButtonState();
+      }
+      
+      // Limpiar selecciones aleatorias
+      clearRandomPicks() {
+        document.querySelectorAll('.number-ball.random-pick').forEach(ball => {
+          ball.classList.remove('random-pick');
+        });
+      }
+      
+      // Limpiar todas las selecciones
+      clearAllSelections() {
+        this.selectedNumbers = [];
+        document.querySelectorAll('.number-ball.selected, .number-ball.random-pick, .number-ball.hot, .number-ball.cold, .number-ball.excluded').forEach(ball => {
+          ball.classList.remove('selected', 'random-pick', 'hot', 'cold', 'excluded');
+        });
+        
+        // Limpiar también los sets
+        this.hotNumbers.clear();
+        this.coldNumbers.clear();
+        this.excludedNumbers.clear();
+        
+        this.updateDisplay();
+        this.calculateStats();
+        this.updateClearButtonState();
+      }
+
+      // Actualizar estado visual del botón papelera
+      updateClearButtonState() {
+        const clearBtn = document.getElementById('clearBtn');
+        const hasSelections = this.selectedNumbers.length > 0 || 
+                            this.hotNumbers.size > 0 || 
+                            this.coldNumbers.size > 0 || 
+                            this.excludedNumbers.size > 0;
+        
+        if (hasSelections) {
+          clearBtn.classList.add('has-selections');
+        } else {
+          clearBtn.classList.remove('has-selections');
+        }
+      }
+
+      // Sincronizar números seleccionados con la visualización
+      syncNumbersToGrid() {
+        // Limpiar todas las clases primero
+        document.querySelectorAll('.number-ball').forEach(ball => {
+          ball.classList.remove('selected', 'random-pick');
+        });
+        
+        // Aplicar las clases correctas
+        this.selectedNumbers.forEach(num => {
+          const ball = document.querySelector(`.number-ball[data-number="${num}"]`);
+          if(ball) {
+            ball.classList.add('selected');
+          }
+        });
+      }
+
+      // Manejo de clic en filtro
+      handleFilterClick(chip) {
+        chip.classList.toggle('active');
+        this.updateFilters();
+      }
+
+      // Validar rangos min/max
+      validateMinMaxInputs(minId, maxId, absoluteMin, absoluteMax, prefix, isFloat = false) {
+        const minInput = document.getElementById(minId);
+        const maxInput = document.getElementById(maxId);
+        if (!minInput || !maxInput) return;
+
+        let minValue = isFloat ? parseFloat(minInput.value) : parseInt(minInput.value, 10);
+        let maxValue = isFloat ? parseFloat(maxInput.value) : parseInt(maxInput.value, 10);
+
+        if (isNaN(minValue)) minValue = absoluteMin;
+        if (isNaN(maxValue)) maxValue = absoluteMax;
+
+        if (minValue < absoluteMin) {
+          minValue = absoluteMin;
+          this.showToast(`${prefix}: El mínimo es ${absoluteMin}`, 'warning');
+        }
+        if (maxValue > absoluteMax) {
+          maxValue = absoluteMax;
+          this.showToast(`${prefix}: El máximo es ${absoluteMax}`, 'warning');
+        }
+        if (minValue > maxValue) {
+          minValue = maxValue;
+          this.showToast(`${prefix}: El mínimo no puede ser mayor que el máximo`, 'warning');
+        }
+
+        minInput.value = isFloat ? minValue.toFixed(1) : minValue;
+        maxInput.value = isFloat ? maxValue.toFixed(1) : maxValue;
+      }
+
+      // Actualización de filtros
+      updateFilters() {
+        this.filters.sum.min = parseInt(document.getElementById('sumMin').value) || 140;
+        this.filters.sum.max = parseInt(document.getElementById('sumMax').value) || 169;
+        this.filters.primos.min = parseInt(document.getElementById('primosMin').value) || 2;
+        this.filters.primos.max = parseInt(document.getElementById('primosMax').value) || 3;
+        this.filters.sumaDigitos.min = parseInt(document.getElementById('sumaDigitosMin').value) || 28;
+        this.filters.sumaDigitos.max = parseInt(document.getElementById('sumaDigitosMax').value) || 45;
+        this.filters.desviacion.min = parseFloat(document.getElementById('desviacionMin').value) || 12.0;
+        this.filters.desviacion.max = parseFloat(document.getElementById('desviacionMax').value) || 18.0;
+
+        this.filters.agrupDecenas = Array.from(document.querySelectorAll('#agrupDecenasOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.consecutivos = Array.from(document.querySelectorAll('#consecutivosOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.terminaciones = Array.from(document.querySelectorAll('#terminacionesExcluidasOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.patrones = Array.from(document.querySelectorAll('#patronesOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.parImpar = Array.from(document.querySelectorAll('#parImparOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.bajosAltos = Array.from(document.querySelectorAll('#bajosAltosOptions .filter-chip.active')).map(chip => chip.dataset.value);
+      }
+
       // Actualización de visualización
       updateDisplay() {
-        const selectedDisplay = document.getElementById('selectedDisplay'); 
+        const selectedDisplay = document.getElementById('selectedDisplay');
         selectedDisplay.innerHTML = '';
-        
+
         if(this.selectedNumbers.length === 0) {
           selectedDisplay.innerHTML = '<div style="color:#666; font-style: italic;">Selecciona hasta 6 números</div>';
-        } else { 
+        } else {
           this.selectedNumbers.sort((a, b) => a - b).forEach(num => {
-            const span = document.createElement('span'); 
-            span.style.background = '#6366f1'; 
-            span.style.color = 'white'; 
-            span.style.padding = '8px 12px'; 
-            span.style.borderRadius = '20px'; 
-            span.style.fontWeight = 'bold'; 
-            span.textContent = num; 
-            selectedDisplay.appendChild(span); 
+            const span = document.createElement('span');
+            span.style.background = '#6366f1';
+            span.style.color = 'white';
+            span.style.padding = '8px 12px';
+            span.style.borderRadius = '20px';
+            span.style.fontWeight = 'bold';
+            span.textContent = num;
+            selectedDisplay.appendChild(span);
           });
         }
       }
-      
+
+      // Generación de combinación
+      async generateCombination() {
+        if(this.isGenerating) return;
+        this.isGenerating = true;
+
+        try {
+          document.getElementById('saveBtn').disabled = false;
+          const strategy = document.querySelector('.strategy-btn.active').dataset.strategy;
+
+          if(strategy === 'simple') {
+            await this.generateSimpleCombination();
+          } else if(strategy === 'winning') {
+            await this.generateWinningCombination();
+          } else {
+            await this.generateMultipleCombination();
+          }
+        } catch(error) {
+          this.showToast('Error generando combinación: ' + error.message, 'error');
+        } finally {
+          this.isGenerating = false;
+        }
+      }
+
+      // Generación de combinación simple
+      async generateSimpleCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        let attempts = 0;
+        const maxAttempts = 50000;
+
+        attemptsEl.textContent = '0';
+        loadingModal.style.display = 'flex';
+
+        while(attempts < maxAttempts) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            await this.delay(1);
+          }
+
+          const combination = this.createIntelligentCombination();
+
+          if(this.validateCombination(combination)) {
+            this.selectedNumbers = combination;
+            this.syncNumbersToGrid();
+            this.updateDisplay();
+            this.calculateStats();
+            this.showTicket([combination]);
+            this.showToast('🎉 ¡Combinación inteligente encontrada!');
+            loadingModal.style.display = 'none';
+            return;
+          }
+        }
+
+        loadingModal.style.display = 'none';
+        this.showToast('No se encontró combinación válida. Relaja los filtros.', 'error');
+      }
+
+      // Generación de combinación ganadora
+      async generateWinningCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        const loadingText = document.getElementById('loadingText');
+
+        loadingModal.style.display = 'flex';
+        attemptsEl.textContent = '0';
+        loadingText.textContent = 'Generando combinaciones ganadoras...';
+
+        const generateCount = parseInt(document.getElementById('generateCount').value) || 100;
+        const playCount = parseInt(document.getElementById('playCount').value) || 10;
+
+        const validCombinations = [];
+        let attempts = 0;
+
+        while(validCombinations.length < generateCount && attempts < 100000) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            loadingText.textContent = `Encontradas ${validCombinations.length}/${generateCount} combinaciones...`;
+            await this.delay(1);
+          }
+
+          const combination = this.createIntelligentCombination();
+
+          if(this.validateCombination(combination)) {
+            const combinationStr = combination.join(',');
+            if(!validCombinations.some(c => c.join(',') === combinationStr)) {
+              validCombinations.push(combination);
+            }
+          }
+        }
+
+        if(validCombinations.length === 0) {
+          loadingModal.style.display = 'none';
+          this.showToast('No se generaron combinaciones válidas. Relaja los filtros.', 'error');
+          return;
+        }
+
+        const bestCombinations = this.selectBestCombinations(validCombinations, playCount);
+
+        if(bestCombinations.length > 0) {
+          this.selectedNumbers = bestCombinations[0];
+          this.syncNumbersToGrid();
+          this.updateDisplay();
+          this.calculateStats();
+        }
+
+        this.showTicket(bestCombinations);
+        this.showToast(`🎉 ¡Generadas ${validCombinations.length} combinaciones! Mostrando las ${playCount} mejores.`);
+        loadingModal.style.display = 'none';
+      }
+
+      // Generación de combinación múltiple
+      async generateMultipleCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        const loadingText = document.getElementById('loadingText');
+
+        attemptsEl.textContent = '0';
+        loadingModal.style.display = 'flex';
+        loadingText.textContent = 'Generando combinación múltiple...';
+
+        const numNumbers = parseInt(document.querySelector('.number-option.active')?.dataset.numbers || 7);
+        const maxAttempts = 50000;
+        let attempts = 0;
+
+        const getRequiredPercentage = (numbers) => {
+          switch(numbers) {
+            case 7: return 60;
+            case 8: return 40;
+            case 9: return 25;
+            case 10: return 15;
+            case 11: return 10;
+            default: return 50;
+          }
+        };
+
+        const requiredPercentage = getRequiredPercentage(numNumbers);
+        let bestCandidate = null;
+
+        loadingText.textContent = `Buscando ${numNumbers} números (mínimo ${requiredPercentage}% válidas)...`;
+
+        while(attempts < maxAttempts) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            const bestPercent = bestCandidate ? bestCandidate.percentage.toFixed(1) : '0';
+            loadingText.textContent = `Intento ${attempts} - Mejor: ${bestPercent}% (necesita ${requiredPercentage}%)`;
+            await this.delay(1);
+          }
+
+          const nNumbers = this.generateDistributedNumbers(numNumbers);
+          const allCombinations = this.generateCombinations(nNumbers, 6);
+          let validCombinations = 0;
+          for(const combo of allCombinations) {
+            if(this.validateCombination(combo)) {
+              validCombinations++;
+            }
+          }
+
+          const validPercentage = (validCombinations / allCombinations.length) * 100;
+
+          if(validPercentage >= requiredPercentage) {
+            this.selectedNumbers = nNumbers.slice(0, 6);
+            this.syncNumbersToGrid();
+            this.updateDisplay();
+            this.calculateStats();
+
+            this.showTicketMultiple(nNumbers, validCombinations, allCombinations.length);
+            this.showToast(`🎉 ¡Combinación múltiple de ${numNumbers} números encontrada! (${validCombinations}/${allCombinations.length} válidas - ${validPercentage.toFixed(1)}%)`);
+            loadingModal.style.display = 'none';
+            return;
+          }
+
+          if(!bestCandidate || validPercentage > bestCandidate.percentage) {
+            bestCandidate = {
+              numbers: [...nNumbers],
+              validCombinations: validCombinations,
+              totalCombinations: allCombinations.length,
+              percentage: validPercentage
+            };
+          }
+        }
+
+        if(bestCandidate && bestCandidate.percentage >= requiredPercentage * 0.6) {
+          this.selectedNumbers = bestCandidate.numbers.slice(0, 6);
+          this.syncNumbersToGrid();
+          this.updateDisplay();
+          this.calculateStats();
+
+          this.showTicketMultiple(bestCandidate.numbers, bestCandidate.validCombinations, bestCandidate.totalCombinations);
+          this.showToast(`⚡ Mejor combinación de ${numNumbers} números encontrada (${bestCandidate.validCombinations}/${bestCandidate.totalCombinations} válidas - ${bestCandidate.percentage.toFixed(1)}%)`);
+          loadingModal.style.display = 'none';
+          return;
+        }
+
+        loadingModal.style.display = 'none';
+        this.showToast(`No se encontró combinación múltiple de ${numNumbers} números válida. Mejor intento: ${bestCandidate ? bestCandidate.percentage.toFixed(1) : 0}%. Intenta relajar los filtros.`, 'error');
+      }
+
+      // Crear combinación inteligente (LÓGICA ORIGINAL CORREGIDA)
+      createIntelligentCombination() {
+        const combination = [];
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !this.excludedNumbers.has(num));
+        
+        // Incluir algunos números calientes seleccionados (máximo 2)
+        const hotSelected = Array.from(this.hotNumbers).filter(n => availableNumbers.includes(n));
+        if(hotSelected.length > 0) {
+          const hotToAdd = Math.min(2, hotSelected.length);
+          for(let i = 0; i < hotToAdd; i++) {
+            const randomHot = hotSelected[Math.floor(Math.random() * hotSelected.length)];
+            if(!combination.includes(randomHot)) {
+              combination.push(randomHot);
+              hotSelected.splice(hotSelected.indexOf(randomHot), 1);
+            }
+          }
+        }
+        
+        // Incluir algunos números fríos seleccionados (máximo 2)
+        const coldSelected = Array.from(this.coldNumbers).filter(n => availableNumbers.includes(n));
+        if(coldSelected.length > 0 && combination.length < 6) {
+          const coldToAdd = Math.min(2, coldSelected.length, 6 - combination.length);
+          for(let i = 0; i < coldToAdd; i++) {
+            const randomCold = coldSelected[Math.floor(Math.random() * coldSelected.length)];
+            if(!combination.includes(randomCold)) {
+              combination.push(randomCold);
+              coldSelected.splice(coldSelected.indexOf(randomCold), 1);
+            }
+          }
+        }
+
+        // Completar con números aleatorios
+        const remainingNumbers = availableNumbers.filter(n => !combination.includes(n));
+        while (combination.length < 6 && remainingNumbers.length > 0) {
+          const randomIndex = Math.floor(Math.random() * remainingNumbers.length);
+          combination.push(remainingNumbers.splice(randomIndex, 1)[0]);
+        }
+
+        return combination.slice(0, 6).sort((a, b) => a - b);
+      }
+
+      // Generar números con mejor distribución
+      generateDistributedNumbers(count) {
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !this.excludedNumbers.has(num));
+        const attempts = [];
+        for(let i = 0; i < 10; i++) {
+          const candidate = [];
+          const available = [...availableNumbers];
+
+          const ranges = [
+            {min: 1, max: 10, count: 0},
+            {min: 11, max: 20, count: 0},
+            {min: 21, max: 30, count: 0},
+            {min: 31, max: 40, count: 0},
+            {min: 41, max: 49, count: 0}
+          ];
+
+          const numbersPerRange = Math.floor(count / 5);
+          const extraNumbers = count % 5;
+
+          for(let rangeIdx = 0; rangeIdx < ranges.length && candidate.length < count; rangeIdx++) {
+            const range = ranges[rangeIdx];
+            const targetCount = numbersPerRange + (rangeIdx < extraNumbers ? 1 : 0);
+            const rangeNumbers = available.filter(n => n >= range.min && n <= range.max);
+
+            for(let j = 0; j < targetCount && rangeNumbers.length > 0 && candidate.length < count; j++) {
+              const randomIndex = Math.floor(Math.random() * rangeNumbers.length);
+              const selectedNumber = rangeNumbers.splice(randomIndex, 1)[0];
+              candidate.push(selectedNumber);
+              available.splice(available.indexOf(selectedNumber), 1);
+            }
+          }
+
+          while(candidate.length < count && available.length > 0) {
+            const randomIndex = Math.floor(Math.random() * available.length);
+            candidate.push(available.splice(randomIndex, 1)[0]);
+          }
+
+          attempts.push(candidate.sort((a, b) => a - b));
+        }
+
+        let bestAttempt = attempts[0];
+        let bestScore = this.calculateDistributionScore(bestAttempt);
+
+        for(let i = 1; i < attempts.length; i++) {
+          const score = this.calculateDistributionScore(attempts[i]);
+          if(score > bestScore) {
+            bestScore = score;
+            bestAttempt = attempts[i];
+          }
+        }
+
+        return bestAttempt;
+      }
+
+      // Calcular puntuación de distribución
+      calculateDistributionScore(numbers) {
+        let score = 0;
+        const ranges = [
+          {min: 1, max: 10}, {min: 11, max: 20}, {min: 21, max: 30},
+          {min: 31, max: 40}, {min: 41, max: 49}
+        ];
+
+        ranges.forEach(range => {
+          const count = numbers.filter(n => n >= range.min && n <= range.max).length;
+          if(count > 0 && count <= 3) score += count * 2;
+          if(count > 3) score -= (count - 3);
+        });
+
+        for(let i = 1; i < numbers.length; i++) {
+          const gap = numbers[i] - numbers[i-1];
+          if(gap >= 2 && gap <= 8) score += 1;
+          if(gap === 1) score -= 0.5;
+          if(gap > 15) score -= 1;
+        }
+
+        if(this.hotNumbers && this.hotNumbers.size > 0) {
+          const hotCount = numbers.filter(n => this.hotNumbers.has(n)).length;
+          score += hotCount * 0.5;
+        }
+
+        return score;
+      }
+
+      // Generar combinaciones
+      generateCombinations(array, size) {
+        if(size === 1) return array.map(value => [value]);
+        if(size === array.length) return [array];
+        if(size > array.length) return [];
+
+        const combinations = [];
+        for(let i = 0; i <= array.length - size; i++) {
+          const head = array.slice(i, i + 1);
+          const tailCombinations = this.generateCombinations(array.slice(i + 1), size - 1);
+
+          for(const tail of tailCombinations) {
+            combinations.push([...head, ...tail]);
+          }
+        }
+        return combinations;
+      }
+
+      // Selección de mejores combinaciones
+      selectBestCombinations(combinations, count) {
+        return combinations
+          .map(combo => ({
+            combination: combo,
+            score: this.calculateAdvancedCombinationScore(combo)
+          }))
+          .sort((a, b) => b.score - a.score)
+          .slice(0, count)
+          .map(item => item.combination);
+      }
+
+      // Cálculo de puntuación avanzada
+      calculateAdvancedCombinationScore(combination) {
+        let score = 0;
+        const hotNumbers = combination.filter(n => this.hotNumbers.has(n));
+        score += hotNumbers.length * 15;
+        const coldNumbers = combination.filter(n => this.coldNumbers.has(n));
+        score -= coldNumbers.length * 8;
+
+        combination.forEach(num => {
+          const stats = this.numberStats[num];
+          if(stats) {
+            score += stats.score * 5;
+            if(stats.cycle >= 3 && stats.cycle <= 12) score += 3;
+            if(stats.trend > 0) score += stats.trend * 4;
+          }
+        });
+
+        const suma = combination.reduce((a, b) => a + b, 0);
+        if(suma >= 140 && suma <= 169) score += 20;
+        const pares = combination.filter(n => n % 2 === 0).length;
+        if(pares >= 2 && pares <= 4) score += 15;
+        const bajos = combination.filter(n => n <= 25).length;
+        if(bajos >= 2 && bajos <= 4) score += 10;
+
+        const ranges = [
+          combination.filter(n => n >= 1 && n <= 10).length,
+          combination.filter(n => n >= 11 && n <= 20).length,
+          combination.filter(n => n >= 21 && n <= 30).length,
+          combination.filter(n => n >= 31 && n <= 40).length,
+          combination.filter(n => n >= 41 && n <= 49).length
+        ];
+        const nonEmptyRanges = ranges.filter(count => count > 0).length;
+        score += nonEmptyRanges * 2;
+        score += Math.random() * 3;
+        return score;
+      }
+
+      // Validación de combinación
+      validateCombination(combination) {
+        if (combination.length !== 6) return false;
+        if (new Set(combination).size !== 6) return false;
+        if (combination.some(n => this.excludedNumbers.has(n))) return false;
+        if (this.filters.terminaciones.length > 0) {
+          if (combination.some(n => this.filters.terminaciones.includes(String(n % 10)))) {
+            return false;
+          }
+        }
+
+        const suma = combination.reduce((a, b) => a + b, 0);
+        if (suma < this.filters.sum.min || suma > this.filters.sum.max) return false;
+
+        const pares = combination.filter(n => n % 2 === 0).length;
+        const parImpar = `${pares}/${6 - pares}`;
+        if (this.filters.parImpar.length > 0 && !this.filters.parImpar.includes(parImpar)) return false;
+
+        const bajos = combination.filter(n => n <= 25).length;
+        const bajosAltos = `${bajos}/${6 - bajos}`;
+        if (this.filters.bajosAltos.length > 0 && !this.filters.bajosAltos.includes(bajosAltos)) return false;
+
+        const decenas = {
+          '1-9': combination.filter(n => n >= 1 && n <= 9).length,
+          '10-19': combination.filter(n => n >= 10 && n <= 19).length,
+          '20-29': combination.filter(n => n >= 20 && n <= 29).length,
+          '30-39': combination.filter(n => n >= 30 && n <= 39).length,
+          '40-49': combination.filter(n => n >= 40 && n <= 49).length
+        };
+        const decenaCounts = Object.values(decenas).filter(count => count > 0).sort((a, b) => b - a);
+        const agrupDecenas = decenaCounts.join('/');
+        if (this.filters.agrupDecenas.length > 0 && !this.filters.agrupDecenas.includes(agrupDecenas)) return false;
+
+        if (!this.validateConsecutivePattern(combination)) return false;
+
+        const sumaDigitos = combination.reduce((sum, num) => {
+          return sum + num.toString().split('').reduce((digitSum, digit) => digitSum + parseInt(digit), 0);
+        }, 0);
+        if (sumaDigitos < this.filters.sumaDigitos.min || sumaDigitos > this.filters.sumaDigitos.max) return false;
+
+        const primosList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+        const primos = combination.filter(n => primosList.includes(n)).length;
+        if (primos < this.filters.primos.min || primos > this.filters.primos.max) return false;
+
+        const mean = combination.reduce((a, b) => a + b, 0) / 6;
+        const variance = combination.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / 6;
+        const desviacion = Math.sqrt(variance);
+        if (desviacion < this.filters.desviacion.min || desviacion > this.filters.desviacion.max) return false;
+
+        if (this.filters.patrones.includes('fibonacci') && this.isFibonacciSequence(combination)) return false;
+        if (this.filters.patrones.includes('paresConsecutivos') && this.hasConsecutivePairs(combination)) return false;
+        if (this.filters.patrones.includes('multiplos') && this.hasMultiples(combination)) return false;
+
+        return true;
+      }
+
+      // Validar patrón de consecutivos
+      validateConsecutivePattern(combination) {
+        const activePatterns = this.filters.consecutivos;
+        if (activePatterns.length === 0) return true;
+        const sorted = [...combination].sort((a, b) => a - b);
+        const actualPattern = this.calculateConsecutivePattern(sorted);
+        return activePatterns.includes(actualPattern);
+      }
+
+      // Calcular patrón de consecutivos
+      calculateConsecutivePattern(sortedNumbers) {
+        if (sortedNumbers.length !== 6) return '-';
+        const consecutiveGroups = [];
+        let currentGroup = 1;
+
+        for (let i = 1; i < sortedNumbers.length; i++) {
+          if (sortedNumbers[i] === sortedNumbers[i-1] + 1) {
+            currentGroup++;
+          } else {
+            if (currentGroup > 1) {
+              consecutiveGroups.push(currentGroup);
+            }
+            currentGroup = 1;
+          }
+        }
+
+        if (currentGroup > 1) {
+          consecutiveGroups.push(currentGroup);
+        }
+
+        const totalInGroups = consecutiveGroups.reduce((sum, group) => sum + group, 0);
+        const singleNumbers = 6 - totalInGroups;
+
+        const pattern = [...consecutiveGroups];
+        for (let i = 0; i < singleNumbers; i++) {
+          pattern.push(1);
+        }
+
+        return pattern.sort((a, b) => b - a).join('/');
+      }
+
+      // Verificación de secuencia Fibonacci
+      isFibonacciSequence(numbers) {
+        const fib = [1, 1, 2, 3, 5, 8, 13, 21, 34];
+        return numbers.every(num => fib.includes(num));
+      }
+
+      // Verificación de pares consecutivos
+      hasConsecutivePairs(numbers) {
+        const sorted = [...numbers].sort((a, b) => a - b);
+        for(let i = 0; i < sorted.length - 1; i++) {
+          if(sorted[i+1] === sorted[i] + 1 && sorted[i] % 2 === 0) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Verificación de múltiplos
+      hasMultiples(numbers) {
+        for(let i = 0; i < numbers.length; i++) {
+          for(let j = i + 1; j < numbers.length; j++) {
+            if(numbers[j] % numbers[i] === 0 || numbers[i] % numbers[j] === 0) {
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+
+      // Cálculo de estadísticas
+      calculateStats() {
+        if (this.selectedNumbers.length < 6) {
+          this.clearStats();
+          return;
+        }
+
+        const nums = [...this.selectedNumbers].sort((a, b) => a - b);
+
+        // Suma
+        const suma = nums.reduce((a, b) => a + b, 0);
+        const sumaValid = suma >= this.filters.sum.min && suma <= this.filters.sum.max;
+        this.updateStat('suma', suma, sumaValid);
+
+        // Par/Impar
+        const pares = nums.filter(n => n % 2 === 0).length;
+        const impares = nums.length - pares;
+        const parImpar = `${pares}/${impares}`;
+        const parImparValid = this.filters.parImpar.includes(parImpar);
+        this.updateStat('parImpar', parImpar, parImparValid);
+
+        // Bajos/Altos
+        const bajos = nums.filter(n => n <= 25).length;
+        const altos = nums.length - bajos;
+        const bajosAltos = `${bajos}/${altos}`;
+        const bajosAltosValid = this.filters.bajosAltos.includes(bajosAltos);
+        this.updateStat('bajosAltos', bajosAltos, bajosAltosValid);
+
+        // Decenas individuales
+        const decenasCount = {
+          '1-9': nums.filter(n => n >= 1 && n <= 9).length,
+          '10-19': nums.filter(n => n >= 10 && n <= 19).length,
+          '20-29': nums.filter(n => n >= 20 && n <= 29).length,
+          '30-39': nums.filter(n => n >= 30 && n <= 39).length,
+          '40-49': nums.filter(n => n >= 40 && n <= 49).length
+        };
+        const decenasPresentes = Object.keys(decenasCount).filter(k => decenasCount[k] > 0);
+        this.updateStat('decenas', decenasPresentes.length, true);
+
+        // Agrupación por decenas
+        const decenaCounts = Object.values(decenasCount).filter(count => count > 0).sort((a, b) => b - a);
+        const agrupDecenas = decenaCounts.join('/');
+        const agrupDecenasValid = this.filters.agrupDecenas.includes(agrupDecenas);
+        this.updateStat('agrupDecenas', agrupDecenas, agrupDecenasValid);
+
+        // Consecutivos
+        this.calculateConsecutiveStats(nums);
+
+        // Suma de dígitos
+        const sumaDigitos = nums.reduce((sum, num) => {
+          return sum + num.toString().split('').reduce((digitSum, digit) => digitSum + parseInt(digit), 0);
+        }, 0);
+        const sumaDigitosValid = sumaDigitos >= this.filters.sumaDigitos.min && sumaDigitos <= this.filters.sumaDigitos.max;
+        this.updateStat('sumaDigitos', sumaDigitos, sumaDigitosValid);
+
+        // Primos
+        const primosList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+        const primos = nums.filter(n => primosList.includes(n)).length;
+        const primosValid = primos >= this.filters.primos.min && primos <= this.filters.primos.max;
+        this.updateStat('primos', primos, primosValid);
+
+        // Desviación estándar
+        if (nums.length >= 2) {
+          const mean = suma / nums.length;
+          const variance = nums.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / nums.length;
+          const desviacion = Math.sqrt(variance);
+          const desviacionValid = desviacion >= this.filters.desviacion.min && desviacion <= this.filters.desviacion.max;
+          this.updateStat('desviacion', desviacion.toFixed(2), desviacionValid);
+        } else {
+          this.updateStat('desviacion', '-', false);
+        }
+
+        // Patrones
+        let patrones = [];
+        if (this.isFibonacciSequence(nums)) patrones.push('Fibonacci');
+        if (this.hasConsecutivePairs(nums)) patrones.push('Pares consec.');
+        if (this.hasMultiples(nums)) patrones.push('Múltiplos');
+
+        const patronesText = patrones.length > 0 ? patrones.join(', ') : 'Ninguno';
+        this.updateStat('patrones', patronesText, true);
+      }
+
+      // Calcular estadísticas de consecutivos
+      calculateConsecutiveStats(nums) {
+        const sorted = [...nums].sort((a, b) => a - b);
+        const consecutivePattern = this.calculateConsecutivePattern(sorted);
+        const consecutivosValid = this.validateConsecutivePattern(nums);
+
+        this.updateStat('consecutivos', consecutivePattern, consecutivosValid);
+
+        return { pattern: consecutivePattern, valid: consecutivosValid };
+      }
+
       // Limpiar estadísticas
       clearStats() {
         const statIds = ['statSuma', 'statParImpar', 'statBajosAltos', 'statDecenas', 'statAgrupDecenas', 'statConsecutivos', 'statSumaDigitos', 'statPrimos', 'statDesviacion', 'statPatrones'];
@@ -1568,7 +2332,7 @@ font-weight: bold;
           }
         });
       }
-      
+
       // Actualizar estadística individual
       updateStat(statName, value, isValid) {
         const element = document.getElementById(`stat${statName.charAt(0).toUpperCase() + statName.slice(1)}`);
@@ -1577,608 +2341,291 @@ font-weight: bold;
           element.className = `stat-value ${isValid ? 'valid' : 'invalid'}`;
         }
       }
-      
-      // Función de cálculo de estadísticas completa
-      calculateStats() {
-        if (this.selectedNumbers.length === 0) {
-          this.clearStats();
+
+      // Mostrar boleto
+      showTicket(combinations) {
+        const ticketEl = document.getElementById('ticket');
+        const ticketCombinations = document.getElementById('ticketCombinations');
+        ticketCombinations.innerHTML = combinations.map((combo, index) => `
+          <div class="ticket-combination">
+            <div class="ticket-number">${index + 1}</div>
+            <div>${combo.join('-')}</div>
+          </div>
+        `).join('');
+
+        const now = new Date();
+        document.getElementById('ticketDate').textContent = now.toLocaleString('es-ES');
+        ticketEl.style.display = 'block';
+
+        this.currentTicket = {
+          combinations: combinations,
+          date: now.toISOString(),
+          id: Date.now(),
+          maxHits: null
+        };
+      }
+
+      // Mostrar boleto múltiple
+      showTicketMultiple(numbers, validCombinations, totalCombinations) {
+        const ticketEl = document.getElementById('ticket');
+        const ticketCombinations = document.getElementById('ticketCombinations');
+        ticketCombinations.innerHTML = `
+          <div class="ticket-combination">
+            <div class="ticket-number">1</div>
+            <div>${numbers.join('-')}</div>
+          </div>
+          <div style="padding: 10px; background:#f9fafb; border-radius: 6px; font-size: 0.9rem;">
+            ${validCombinations}/${totalCombinations} combinaciones válidas (${((validCombinations/totalCombinations)*100).toFixed(1)}%)
+          </div>
+        `;
+
+        const now = new Date();
+        document.getElementById('ticketDate').textContent = now.toLocaleString('es-ES');
+        ticketEl.style.display = 'block';
+
+        this.currentTicket = {
+          combinations: [numbers],
+          date: now.toISOString(),
+          id: Date.now(),
+          maxHits: null
+        };
+      }
+
+      // Guardar boleto
+      saveTicket() {
+        if(!this.currentTicket) {
+          this.showToast('No hay boleto para guardar', 'error');
           return;
         }
-        
-        const nums = [...this.selectedNumbers].sort((a, b) => a - b);
-        
-        // Suma
-        const suma = nums.reduce((a, b) => a + b, 0);
-        const sumaValid = suma >= this.filters.sum.min && suma <= this.filters.sum.max;
-        this.updateStat('suma', suma, sumaValid);
-        
-        // Par/Impar
-        const pares = nums.filter(n => n % 2 === 0).length;
-        const impares = nums.length - pares;
-        const parImpar = `${pares}/${impares}`;
-        const parImparValid = this.filters.parImpar.includes(parImpar);
-        this.updateStat('parImpar', parImpar, parImparValid);
-        
-        // Bajos/Altos
-        const bajos = nums.filter(n => n <= 25).length;
-        const altos = nums.length - bajos;
-        const bajosAltos = `${bajos}/${altos}`;
-        const bajosAltosValid = this.filters.bajosAltos.includes(bajosAltos);
-        this.updateStat('bajosAltos', bajosAltos, bajosAltosValid);
-        
-        // Decenas individuales
-        const decenasCount = {
-          '1-9': nums.filter(n => n >= 1 && n <= 9).length,
-          '10-19': nums.filter(n => n >= 10 && n <= 19).length,
-          '20-29': nums.filter(n => n >= 20 && n <= 29).length,
-          '30-39': nums.filter(n => n >= 30 && n <= 39).length,
-          '40-49': nums.filter(n => n >= 40 && n <= 49).length
-        };
-        const decenasPresentes = Object.keys(decenasCount).filter(k => decenasCount[k] > 0);
-        this.updateStat('decenas', decenasPresentes.length, true);
-        
-        // Agrupación por decenas
-        const decenaCounts = Object.values(decenasCount).filter(count => count > 0).sort((a, b) => b - a);
-        const agrupDecenas = decenaCounts.join('/');
-        const agrupDecenasValid = this.filters.agrupDecenas.includes(agrupDecenas);
-        this.updateStat('agrupDecenas', agrupDecenas, agrupDecenasValid);
-        
-        // Consecutivos
-        this.calculateConsecutiveStats(nums);
-        
-        // Suma de dígitos
-        const sumaDigitos = nums.reduce((sum, num) => {
-          return sum + num.toString().split('').reduce((digitSum, digit) => digitSum + parseInt(digit), 0);
-        }, 0);
-        const sumaDigitosValid = sumaDigitos >= this.filters.sumaDigitos.min && sumaDigitos <= this.filters.sumaDigitos.max;
-        this.updateStat('sumaDigitos', sumaDigitos, sumaDigitosValid);
-        
-        // Primos
-        const primosList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
-        const primos = nums.filter(n => primosList.includes(n)).length;
-        const primosValid = primos >= this.filters.primos.min && primos <= this.filters.primos.max;
-        this.updateStat('primos', primos, primosValid);
-        
-        // Desviación estándar
-        if (nums.length >= 2) {
-          const mean = suma / nums.length;
-          const variance = nums.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / nums.length;
-          const desviacion = Math.sqrt(variance);
-          const desviacionValid = desviacion >= this.filters.desviacion.min && desviacion <= this.filters.desviacion.max;
-          this.updateStat('desviacion', desviacion.toFixed(2), desviacionValid);
+
+        // Límite de 10 boletos
+        if (this.savedTickets.length >= 10) {
+            this.savedTickets.pop();
+        }
+        this.savedTickets.unshift(this.currentTicket);
+        this.saveToStorage();
+        this.updateSavedTickets();
+        this.showToast('Boleto guardado correctamente');
+        document.getElementById('saveBtn').disabled = true;
+      }
+
+      // Compartir boleto
+      shareTicket() {
+        if(!this.currentTicket) {
+          this.showToast('No hay boleto para compartir', 'error');
+          return;
+        }
+
+        const shareText = `🎲 DataLotto 49 PRO - Análisis IA
+📅 ${new Date(this.currentTicket.date).toLocaleString('es-ES')}
+${this.currentTicket.combinations.map((combo, index) => `${index + 1}. ${combo.join('-')}`).join('\n')}
+¡Combinación generada con IA! 🤖🍀`;
+
+        if(navigator.share) {
+          navigator.share({ title: 'DataLotto 49 PRO - Análisis IA', text: shareText });
         } else {
-          this.updateStat('desviacion', '-', false);
-        }
-        
-        // Patrones
-        let patrones = [];
-        if (this.isFibonacciSequence(nums)) patrones.push('Fibonacci');
-        if (this.hasConsecutivePairs(nums)) patrones.push('Pares consec.');
-        if (this.hasMultiples(nums)) patrones.push('Múltiplos');
-        
-        const patronesText = patrones.length > 0 ? patrones.join(', ') : 'Ninguno';
-        this.updateStat('patrones', patronesText, true);
-      }
-      
-      // Calcular estadísticas de consecutivos
-      calculateConsecutiveStats(nums) {
-        const sorted = [...nums].sort((a, b) => a - b);
-        const consecutivePattern = this.calculateConsecutivePattern(sorted);
-        const consecutivosValid = this.validateConsecutivePattern(nums);
-        
-        this.updateStat('consecutivos', consecutivePattern, consecutivosValid);
-        
-        return { pattern: consecutivePattern, valid: consecutivosValid };
-      }
-      
-      // Calcular patrón de consecutivos
-      calculateConsecutivePattern(sortedNumbers) {
-        const consecutiveGroups = [];
-        let currentGroup = 1;
-        
-        for (let i = 1; i < sortedNumbers.length; i++) {
-          if (sortedNumbers[i] === sortedNumbers[i-1] + 1) {
-            currentGroup++;
-          } else {
-            if (currentGroup > 1) {
-              consecutiveGroups.push(currentGroup);
-            }
-            currentGroup = 1;
-          }
-        }
-        
-        // No olvidar el último grupo
-        if (currentGroup > 1) {
-          consecutiveGroups.push(currentGroup);
-        }
-        
-        // Calcular números sueltos (no consecutivos)
-        const totalInGroups = consecutiveGroups.reduce((sum, group) => sum + group, 0);
-        const singleNumbers = 6 - totalInGroups;
-        
-        // Crear el patrón final
-        const pattern = [...consecutiveGroups];
-        for (let i = 0; i < singleNumbers; i++) {
-          pattern.push(1);
-        }
-        
-        // Ordenar de mayor a menor y unir con '/'
-        return pattern.sort((a, b) => b - a).join('/');
-      }
-      
-      // Validar patrón de consecutivos
-      validateConsecutivePattern(combination) {
-        const activePatterns = this.filters.consecutivos;
-        
-        // Si no hay filtros activos, aceptar cualquier combinación
-        if (activePatterns.length === 0) return true;
-        
-        const sorted = [...combination].sort((a, b) => a - b);
-        const actualPattern = this.calculateConsecutivePattern(sorted);
-        
-        // La combinación es válida si coincide con algún patrón activo
-        return activePatterns.includes(actualPattern);
-      }
-      
-      // Verificación de secuencia Fibonacci
-      isFibonacciSequence(numbers) {
-        const fib = [1, 1, 2, 3, 5, 8, 13, 21, 34]; 
-        return numbers.every(num => fib.includes(num));
-      }
-      
-      // Verificación de pares consecutivos
-      hasConsecutivePairs(numbers) {
-        const sorted = [...numbers].sort((a, b) => a - b);
-        for(let i = 0; i < sorted.length - 1; i++) { 
-          if(sorted[i+1] === sorted[i] + 1 && sorted[i] % 2 === 0) {
-            return true; 
-          }
-        }
-        return false;
-      }
-      
-      // Verificación de múltiplos
-      hasMultiples(numbers) { 
-        for(let i = 0; i < numbers.length; i++) {
-          for(let j = i + 1; j < numbers.length; j++) {
-            if(numbers[j] % numbers[i] === 0 || numbers[i] % numbers[j] === 0) {
-              return true; 
-            }
-          }
-        }
-        return false;
-      }
-      
-      // Generación de combinación
-      async generateCombination() {
-        if(this.isGenerating) return; 
-        this.isGenerating = true;
-        
-        try {
-          const strategy = document.querySelector('.strategy-btn.active').dataset.strategy;
-          
-          if(strategy === 'simple') {
-            await this.generateSimpleCombination(); 
-          } else if(strategy === 'winning') {
-            await this.generateWinningCombination();
-          } else {
-            await this.generateMultipleCombination();
-          }
-        } catch(error) {
-          this.showToast('Error generando combinación: ' + error.message, 'error');
-        } finally {
-          this.isGenerating = false; 
-        }
-      }
-      
-      // Generación de combinación simple
-      async generateSimpleCombination() {
-        const loadingModal = document.getElementById('loadingModal'); 
-        const attemptsEl = document.getElementById('loadingAttempts'); 
-        let attempts = 0; 
-        const maxAttempts = 50000;
-        
-        attemptsEl.textContent = '0';
-        loadingModal.style.display = 'flex';
-        
-        while(attempts < maxAttempts) {
-          attempts++; 
-          attemptsEl.textContent = attempts;
-          
-          if(attempts % 100 === 0) {
-            await this.delay(1);
-          }
-          
-          const combination = this.createIntelligentCombination();
-          
-          if(this.validateCombination(combination)) {
-            this.selectedNumbers = combination; 
-            this.updateDisplay(); 
-            this.calculateStats(); 
-            this.showTicket([combination]); 
-            this.showToast('🎉 ¡Combinación inteligente encontrada!');
-            loadingModal.style.display = 'none'; 
-            return; 
-          }
-        }
-        
-        loadingModal.style.display = 'none'; 
-        this.showToast('No se encontró combinación válida. Relaja los filtros.', 'error');
-      }
-      
-      // Generación de combinación ganadora
-      async generateWinningCombination() {
-        const loadingModal = document.getElementById('loadingModal'); 
-        const attemptsEl = document.getElementById('loadingAttempts'); 
-        const loadingText = document.getElementById('loadingText');
-        
-        loadingModal.style.display = 'flex'; 
-        attemptsEl.textContent = '0';
-        loadingText.textContent = 'Generando combinaciones ganadoras...';
-        
-        const generateCount = parseInt(document.getElementById('generateCount').value) || 100; 
-        const playCount = parseInt(document.getElementById('playCount').value) || 10;
-        
-        const validCombinations = []; 
-        let attempts = 0;
-        
-        while(validCombinations.length < generateCount && attempts < 100000) {
-          attempts++; 
-          attemptsEl.textContent = attempts;
-          
-          if(attempts % 100 === 0) { 
-            loadingText.textContent = `Encontradas ${validCombinations.length}/${generateCount} combinaciones...`;
-            await this.delay(1);
-          }
-          
-          const combination = this.createIntelligentCombination();
-          
-          if(this.validateCombination(combination)) {
-            const combinationStr = combination.join(',');
-            if(!validCombinations.some(c => c.join(',') === combinationStr)) {
-              validCombinations.push(combination); 
-            }
-          }
-        }
-        
-        if(validCombinations.length === 0) {
-          loadingModal.style.display = 'none'; 
-          this.showToast('No se generaron combinaciones válidas. Relaja los filtros.', 'error'); 
-          return;
-        }
-        
-        const bestCombinations = this.selectBestCombinations(validCombinations, playCount);
-        
-        if(bestCombinations.length > 0) {
-          this.selectedNumbers = bestCombinations[0]; 
-          this.updateDisplay();
-          this.calculateStats();
-        }
-        
-        this.showTicket(bestCombinations); 
-        this.showToast(`🎉 ¡Generadas ${validCombinations.length} combinaciones! Mostrando las ${playCount} mejores.`);
-        loadingModal.style.display = 'none';
-      }
-      
-      // *** GENERACIÓN DE COMBINACIÓN MÚLTIPLE - VERSIÓN CORREGIDA ***
-      async generateMultipleCombination() {
-        const loadingModal = document.getElementById('loadingModal'); 
-        const attemptsEl = document.getElementById('loadingAttempts'); 
-        const loadingText = document.getElementById('loadingText');
-        
-        attemptsEl.textContent = '0';
-        loadingModal.style.display = 'flex';
-        loadingText.textContent = 'Generando combinación múltiple...';
-        
-        const numNumbers = parseInt(document.querySelector('.number-option.active')?.dataset.numbers || 7); 
-        const maxAttempts = 50000; 
-        let attempts = 0;
-        
-        // Sistema de margen adaptativo
-        const getRequiredPercentage = (numbers) => {
-          switch(numbers) {
-            case 7: return 60; // 60% para 7 números
-            case 8: return 40; // 40% para 8 números
-            case 9: return 25; // 25% para 9 números
-            case 10: return 15; // 15% para 10 números
-            case 11: return 10; // 10% para 11 números
-            default: return 50;
-          }
-        };
-        
-        const requiredPercentage = getRequiredPercentage(numNumbers);
-        let bestCandidate = null;
-        
-        loadingText.textContent = `Buscando ${numNumbers} números (mínimo ${requiredPercentage}% válidas)...`;
-        
-        while(attempts < maxAttempts) {
-          attempts++; 
-          attemptsEl.textContent = attempts;
-          
-          if(attempts % 100 === 0) {
-            const bestPercent = bestCandidate ? bestCandidate.percentage.toFixed(1) : '0';
-            loadingText.textContent = `Intento ${attempts} - Mejor: ${bestPercent}% (necesita ${requiredPercentage}%)`;
-            await this.delay(1);
-          }
-          
-          // Generar números con mejor distribución
-          const nNumbers = this.generateDistributedNumbers(numNumbers);
-          
-          // Crear todas las combinaciones posibles de 6 números
-          const allCombinations = this.generateCombinations(nNumbers, 6);
-          
-          // Validar combinaciones
-          let validCombinations = 0;
-          for(const combo of allCombinations) { 
-            if(this.validateCombination(combo)) {
-              validCombinations++;
-            }
-          }
-          
-          const validPercentage = (validCombinations / allCombinations.length) * 100;
-          
-          // Si cumple el umbral, ¡éxito!
-          if(validPercentage >= requiredPercentage) {
-            this.selectedNumbers = nNumbers.slice(0, 6); 
-            this.updateDisplay(); 
-            this.calculateStats();
-            
-            this.showTicketMultiple(nNumbers, validCombinations, allCombinations.length);
-            this.showToast(`🎉 ¡Combinación múltiple de ${numNumbers} números encontrada! (${validCombinations}/${allCombinations.length} válidas - ${validPercentage.toFixed(1)}%)`);
-            loadingModal.style.display = 'none'; 
-            return; 
-          }
-          
-          // Guardar el mejor candidato encontrado
-          if(!bestCandidate || validPercentage > bestCandidate.percentage) {
-            bestCandidate = {
-              numbers: [...nNumbers],
-              validCombinations: validCombinations,
-              totalCombinations: allCombinations.length,
-              percentage: validPercentage
-            };
-          }
-        }
-        
-        // Si no encontró una perfecta, usar la mejor candidata si es razonable
-        if(bestCandidate && bestCandidate.percentage >= requiredPercentage * 0.6) {
-          this.selectedNumbers = bestCandidate.numbers.slice(0, 6); 
-          this.updateDisplay(); 
-          this.calculateStats();
-          
-          this.showTicketMultiple(bestCandidate.numbers, bestCandidate.validCombinations, bestCandidate.totalCombinations);
-          this.showToast(`⚡ Mejor combinación de ${numNumbers} números encontrada (${bestCandidate.validCombinations}/${bestCandidate.totalCombinations} válidas - ${bestCandidate.percentage.toFixed(1)}%)`);
-          loadingModal.style.display = 'none';
-          return;
-        }
-        
-        loadingModal.style.display = 'none'; 
-        this.showToast(`No se encontró combinación múltiple de ${numNumbers} números válida. Mejor intento: ${bestCandidate ? bestCandidate.percentage.toFixed(1) : 0}%. Intenta relajar los filtros.`, 'error');
-      }
-      
-      // *** NUEVA FUNCIÓN: Generar números con mejor distribución ***
-      generateDistributedNumbers(count) {
-        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
-          .filter(num => !this.excludedNumbers.has(num));
-        
-        // Intentar 10 combinaciones y elegir la mejor distribuida
-        const attempts = [];
-        for(let i = 0; i < 10; i++) {
-          const candidate = [];
-          const available = [...availableNumbers];
-          
-          // Asegurar distribución por rangos
-          const ranges = [
-            {min: 1, max: 10, count: 0},
-            {min: 11, max: 20, count: 0},
-            {min: 21, max: 30, count: 0},
-            {min: 31, max: 40, count: 0},
-            {min: 41, max: 49, count: 0}
-          ];
-          
-          // Seleccionar al menos uno de cada rango si es posible
-          const numbersPerRange = Math.floor(count / 5);
-          const extraNumbers = count % 5;
-          
-          for(let rangeIdx = 0; rangeIdx < ranges.length && candidate.length < count; rangeIdx++) {
-            const range = ranges[rangeIdx];
-            const targetCount = numbersPerRange + (rangeIdx < extraNumbers ? 1 : 0);
-            const rangeNumbers = available.filter(n => n >= range.min && n <= range.max);
-            
-            for(let j = 0; j < targetCount && rangeNumbers.length > 0 && candidate.length < count; j++) {
-              const randomIndex = Math.floor(Math.random() * rangeNumbers.length);
-              const selectedNumber = rangeNumbers.splice(randomIndex, 1)[0];
-              candidate.push(selectedNumber);
-              available.splice(available.indexOf(selectedNumber), 1);
-            }
-          }
-          
-          // Completar con números aleatorios si faltan
-          while(candidate.length < count && available.length > 0) {
-            const randomIndex = Math.floor(Math.random() * available.length);
-            candidate.push(available.splice(randomIndex, 1)[0]);
-          }
-          
-          attempts.push(candidate.sort((a, b) => a - b));
-        }
-        
-        // Elegir la combinación con mejor distribución
-        let bestAttempt = attempts[0];
-        let bestScore = this.calculateDistributionScore(bestAttempt);
-        
-        for(let i = 1; i < attempts.length; i++) {
-          const score = this.calculateDistributionScore(attempts[i]);
-          if(score > bestScore) {
-            bestScore = score;
-            bestAttempt = attempts[i];
-          }
-        }
-        
-        return bestAttempt;
-      }
-      
-      // *** NUEVA FUNCIÓN: Calcular puntuación de distribución ***
-      calculateDistributionScore(numbers) {
-        let score = 0;
-        
-        // Puntos por distribución en rangos
-        const ranges = [
-          {min: 1, max: 10},
-          {min: 11, max: 20},
-          {min: 21, max: 30},
-          {min: 31, max: 40},
-          {min: 41, max: 49}
-        ];
-        
-        ranges.forEach(range => {
-          const count = numbers.filter(n => n >= range.min && n <= range.max).length;
-          if(count > 0 && count <= 3) score += count * 2; // Bonus por tener números en el rango
-          if(count > 3) score -= (count - 3); // Penalizar concentración excesiva
-        });
-        
-        // Puntos por espaciado equilibrado
-        for(let i = 1; i < numbers.length; i++) {
-          const gap = numbers[i] - numbers[i-1];
-          if(gap >= 2 && gap <= 8) score += 1; // Espaciado ideal
-          if(gap === 1) score -= 0.5; // Penalizar números muy seguidos
-          if(gap > 15) score -= 1; // Penalizar gaps muy grandes
-        }
-        
-        // Bonus por usar números calientes si están disponibles
-        if(this.hotNumbers && this.hotNumbers.size > 0) {
-          const hotCount = numbers.filter(n => this.hotNumbers.has(n)).length;
-          score += hotCount * 0.5;
-        }
-        
-        return score;
-      }
-      
-      // Crear combinación inteligente
-      createIntelligentCombination() {
-        const combination = [];
-        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
-          .filter(num => !this.excludedNumbers.has(num));
-        
-        // Si necesitamos consecutivos, generarlos intencionalmente
-        if (this.needsConsecutiveNumbers()) {
-          const consecutivePattern = this.getRequiredConsecutivePattern();
-          const consecutiveGroups = this.generateConsecutiveGroups(consecutivePattern, availableNumbers);
-          
-          // Añadir grupos consecutivos a la combinación
-          consecutiveGroups.forEach(group => {
-            combination.push(...group);
-            // Remover números usados del pool disponible
-            group.forEach(num => {
-              const index = availableNumbers.indexOf(num);
-              if (index > -1) availableNumbers.splice(index, 1);
-            });
+          navigator.clipboard.writeText(shareText).then(() => {
+            this.showToast('Boleto copiado al portapapeles');
+          }).catch(() => {
+            this.showToast('Error al copiar el boleto', 'error');
           });
         }
-        
-        // Completar con números aleatorios hasta tener 6 números
-        while (combination.length < 6 && availableNumbers.length > 0) {
-          const randomIndex = Math.floor(Math.random() * availableNumbers.length);
-          const number = availableNumbers[randomIndex];
-          combination.push(number);
-          availableNumbers.splice(randomIndex, 1);
+      }
+
+      // Actualizar boletos guardados
+      updateSavedTickets() {
+        const container = document.getElementById('savedTickets');
+        if(this.savedTickets.length === 0) {
+          container.innerHTML = '<div style="color:#666; text-align: center; padding: 20px;">No tienes boletos guardados</div>';
+          return;
         }
-        
-        return combination.sort((a, b) => a - b);
+
+        container.innerHTML = this.savedTickets.map(ticket => `
+          <div class="saved-ticket-item" data-ticket-id="${ticket.id}">
+            <div class="saved-ticket-header">
+              <div class="saved-ticket-date">
+                Boleto #${ticket.id.toString().slice(-4)} | ${new Date(ticket.date).toLocaleString('es-ES')}
+                ${ticket.maxHits !== null ? `<span style="color: var(--success); font-weight: bold;"> | Máx: ${ticket.maxHits} aciertos</span>` : ''}
+              </div>
+              <div class="saved-ticket-actions">
+                <button class="saved-ticket-btn validate" data-id="${ticket.id}">🔍 Validar</button>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span>${ticket.combinations.length} combinación${ticket.combinations.length > 1 ? 'es' : ''}</span>
+              <button class="toggle-btn" data-id="${ticket.id}"><span>+</span></button>
+            </div>
+            <div class="saved-combinations" data-id="${ticket.id}" style="display: none;">
+              ${ticket.combinations.map((combo, index) => `
+                <div class="saved-combination" data-combo-index="${index}">
+                  <div class="saved-combination-content">
+                    <div class="saved-combination-number">${index + 1}</div>
+                    <div style="font-family:'Courier New', monospace;">${combo.join('-')}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const btnEl = e.target.closest('.toggle-btn');
+            const ticketId = btnEl.dataset.id;
+            const combinations = document.querySelector(`.saved-combinations[data-id="${ticketId}"]`);
+            const isVisible = combinations.style.display === 'block';
+            combinations.style.display = isVisible ? 'none' : 'block';
+            btnEl.innerHTML = isVisible ? '<span>+</span>' : '<span>−</span>';
+          });
+        });
+
+        document.querySelectorAll('.validate').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const ticketId = e.target.dataset.id;
+            this.validateSavedTicket(ticketId);
+          });
+        });
       }
-      
-      // Detectar si necesitamos números consecutivos
-      needsConsecutiveNumbers() {
-        // Si 1/1/1/1/1/1 está desactivado, necesitamos consecutivos
-        const activePatterns = this.filters.consecutivos;
-        return activePatterns.length > 0 && !activePatterns.includes('1/1/1/1/1/1');
-      }
-      
-      // Obtener el patrón de consecutivos requerido
-      getRequiredConsecutivePattern() {
-        const activePatterns = this.filters.consecutivos;
-        
-        // Elegir aleatoriamente uno de los patrones activos
-        if (activePatterns.length > 0) {
-          const randomIndex = Math.floor(Math.random() * activePatterns.length);
-          return activePatterns[randomIndex];
+
+      // Validar boleto guardado
+      validateSavedTicket(ticketId) {
+        const ticket = this.savedTickets.find(t => t.id.toString() === ticketId);
+        if(!ticket) {
+          this.showToast('Boleto no encontrado', 'error');
+          return;
         }
-        
-        return '2/1/1/1/1'; // Por defecto
+
+        this.currentValidatingTicket = ticket;
+        this.showValidationModal();
       }
-      
-      // Generar grupos consecutivos según el patrón
-      generateConsecutiveGroups(pattern, availableNumbers) {
-        const groups = [];
-        const patternParts = pattern.split('/').map(Number);
-        
-        // Identificar qué grupos consecutivos necesitamos (mayor que 1)
-        const consecutiveNeeded = patternParts.filter(part => part > 1);
-        
-        for (const groupSize of consecutiveNeeded) {
-          const group = this.generateSingleConsecutiveGroup(groupSize, availableNumbers);
-          if (group.length === groupSize) {
-            groups.push(group);
-            // Remover números usados
-            group.forEach(num => {
-              const index = availableNumbers.indexOf(num);
-              if (index > -1) availableNumbers.splice(index, 1);
-            });
-          }
+
+      // Mostrar modal de validación
+      showValidationModal() {
+        document.getElementById('validationModal').style.display = 'flex';
+        document.getElementById('winningNumbersInput').value = '';
+        document.getElementById('validationResults').innerHTML = '';
+      }
+
+      // Cerrar modal de validación
+      closeValidationModal() {
+        document.getElementById('validationModal').style.display = 'none';
+        this.currentValidatingTicket = null;
+      }
+
+      // Realizar validación
+      performValidation() {
+        if(!this.currentValidatingTicket) {
+          this.showToast('No hay boleto para validar', 'error');
+          return;
         }
-        
-        return groups;
-      }
-      
-      // Generar un grupo consecutivo individual
-      generateSingleConsecutiveGroup(size, availableNumbers) {
-        // Intentar varias veces encontrar un grupo consecutivo válido
-        for (let attempt = 0; attempt < 30; attempt++) {
-          // Elegir un número de inicio aleatorio que permita el grupo completo
-          const maxStart = Math.min(49 - size + 1, 45); // Límite superior seguro
-          const minStart = Math.max(1, 2); // Límite inferior seguro
+
+        const input = document.getElementById('winningNumbersInput').value.trim();
+        if(!input) {
+          this.showToast('Por favor, introduce los números ganadores', 'error');
+          return;
+        }
+
+        // Permitir separación por espacios, comas o puntos
+        const winningNumbers = input.split(/[,\s\.]+/).map(n => parseInt(n.trim())).filter(n => !isNaN(n) && n >= 1 && n <= 49);
+        if(winningNumbers.length !== 6) {
+          this.showToast('Debes introducir exactamente 6 números ganadores válidos.', 'error');
+          return;
+        }
+
+        let resultsHtml = '<h4>Resultados de Validación</h4>';
+        let maxMatches = 0;
+
+        // Actualizar el DOM del boleto guardado con los aciertos
+        const ticketElement = document.querySelector(`.saved-ticket-item[data-ticket-id="${this.currentValidatingTicket.id}"]`);
+
+        this.currentValidatingTicket.combinations.forEach((combo, index) => {
+          const matches = combo.filter(num => winningNumbers.includes(num)).length;
+          if (matches > maxMatches) maxMatches = matches;
           
-          const startNumber = minStart + Math.floor(Math.random() * (maxStart - minStart + 1));
-          const group = Array.from({length: size}, (_, i) => startNumber + i);
-          
-          // Verificar que todos los números del grupo estén disponibles
-          const allAvailable = group.every(num => 
-            availableNumbers.includes(num) && num >= 1 && num <= 49
-          );
-          
-          if (allAvailable) {
-            return group;
+          resultsHtml += `<div style="margin: 10px 0; padding: 10px; background:#f9fafb; border-radius: 6px;">
+              <strong>Combinación ${index + 1}:</strong> ${combo.join('-')}<br>
+              <strong>Aciertos: ${matches}/6</strong>
+            </div>`;
+
+          if (ticketElement) {
+             const comboElement = ticketElement.querySelector(`.saved-combination[data-combo-index="${index}"]`);
+             if (comboElement) {
+                // Limpiar aciertos previos
+                const existingHitCount = comboElement.querySelector('.hit-count');
+                if (existingHitCount) existingHitCount.remove();
+                // Añadir nuevo
+                const hitCountSpan = document.createElement('span');
+                hitCountSpan.className = 'hit-count';
+                hitCountSpan.textContent = `${matches} aciertos`;
+                comboElement.appendChild(hitCountSpan);
+             }
           }
-        }
-        
-        // Si no se puede generar el grupo, devolver números disponibles
-        return availableNumbers.slice(0, Math.min(size, availableNumbers.length));
+        });
+
+        resultsHtml += `<div style="margin-top: 10px; padding: 10px; background:#e0f2fe; border-radius: 6px; font-weight: bold;">
+          Máximo de aciertos en una combinación: ${maxMatches}/6
+        </div>`;
+
+        // Guardar aciertos máximos en el boleto (persistencia)
+        this.currentValidatingTicket.maxHits = maxMatches;
+        this.saveToStorage();
+        this.updateSavedTickets();
+
+        document.getElementById('validationResults').innerHTML = resultsHtml;
+        this.showToast('Validación completada.');
       }
-      
-      // Validación de combinación
-      validateCombination(combination) {
-        if (combination.length !== 6) return false;
-        if (new Set(combination).size !== 6) return false;
-        
-        // Verificar números excluidos
-        if (combination.some(n => this.excludedNumbers.has(n))) return false;
-        
-        // Verificar terminaciones excluidas
-        if (this.filters.terminaciones.length > 0) {
-          if (combination.some(n => this.filters.terminaciones.includes((n % 10).toString()))) {
-            return false;
+
+      // Cargar boletos guardados
+      loadSavedTickets() {
+        try {
+          const saved = localStorage.getItem('DataLotto49AdvancedTickets');
+          if(saved) {
+            this.savedTickets = JSON.parse(saved);
+            this.updateSavedTickets();
           }
+        } catch(error) {
+          console.error('Error loading saved tickets:', error);
         }
-        
-        // Suma
-        const suma = combination.reduce((a, b) => a + b, 0);
-        if (suma < this.filters.sum.min || suma > this.filters.sum.max) return false;
-        
-        // Par/Impar
-        const pares = combination.filter(n => n % 2 === 0).length;
-        const parImpar = `${pares}/${6 - pares}`;
-        if (this.filters.parImpar.length > 0 && !this.filters.parImpar.includes(parImpar)) return false;
-        
-        // Bajos/Altos
-        const bajos = combination.filter(n => n <= 25).length;
-        const bajosAltos = `${bajos}/${6 - bajos}`;
-        if (this.filters.bajosAltos.length > 0
+      }
+
+      // Guardar en almacenamiento
+      saveToStorage() {
+        try {
+          localStorage.setItem('DataLotto49AdvancedTickets', JSON.stringify(this.savedTickets));
+        } catch(error) {
+          console.error('Error saving tickets:', error);
+          this.showToast('Error al guardar el boleto', 'error');
+        }
+      }
+
+      // Mostrar mensaje
+      showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type}`;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3500);
+      }
+
+      // Retardo
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+
+    // Inicialización de la aplicación
+    let app;
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        app = new DataLotto49Advanced();
+        console.log('✅ DataLotto 49 Advanced cargado exitosamente');
+      } catch(error) {
+        console.error('❌ Error al cargar DataLotto 49 Advanced:', error);
+      }
+    });
+  </script>
+</body>
+</html>
